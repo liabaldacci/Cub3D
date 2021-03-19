@@ -6,20 +6,38 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 21:59:03 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/17 21:46:00 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/18 22:13:18 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
+void    ft_black_screen(t_vars *strct) {
+    int i;
+    int j;
+
+    i = 0;
+    j = 0;
+    while (i < strct->window_width) {
+        while (j < strct->window_height) {
+            ft_mlx_pixel_put(strct, i, j, 0x00000000);
+            j++;
+        }
+        j = 0;
+        i++;
+    }
+}
+
 void    ft_square(t_vars *strct, int x, int y, int height, int width, unsigned int color)
 {
     int x_temp;
+    int y_temp;
 
     x_temp = x;
-    while (y <= height)
+    y_temp = y;
+    while (y < (height + y_temp))
     {
-        while (x <= width)
+        while (x < (width + x_temp))
         {
             ft_mlx_pixel_put(strct, x, y, color);
             x++;

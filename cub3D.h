@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 21:24:09 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/17 21:54:23 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/18 22:09:10 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct  s_vars
     int     mouse_y;
     int         playerX;
     int         playerY;
+    int         player_size;
     
 }               t_vars;
 
@@ -49,7 +50,9 @@ void    ft_square(t_vars *strct, int x, int y, int height, int width, unsigned i
 void    ft_line(t_vars *strct, int x1, int y1, int x2, int y2, int color);
 void    ft_empty_circle(t_vars *strct, int x, int y, int radius, int color);
 void    ft_filled_circle(t_vars *strct, int x, int y, int radius, int color);
-int     key_hook(int keycode, t_vars *strct);
+int     key_press(int keycode, t_vars *strct);
+int     key_release(int keycode, t_vars *strct);
 int     close_program(void);
+int     ft_move(t_vars *strct);
 
 #endif

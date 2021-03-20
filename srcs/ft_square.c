@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 21:59:03 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/18 22:13:18 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/19 18:18:48 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void    ft_black_screen(t_vars *strct) {
         j = 0;
         i++;
     }
+    //try this with the logic from the ft_line.c
 }
 
 void    ft_square(t_vars *strct, int x, int y, int height, int width, unsigned int color)

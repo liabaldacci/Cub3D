@@ -1,8 +1,10 @@
 NAME =		cub3D
+GNL = get_next_line
 
 SRC_DIR = 	srcs
 MLX_DIR = 	mlx
 OBJS_DIR =	objs
+GNL_DIR = GNL
 
 CC =		clang -g -fsanitize=address
 FLAGS_CC =	-Wall -Wextra -Werror -g
@@ -12,9 +14,12 @@ MLX =		$(MLX_DIR)/libmlx.a
 SRCS =		$(SRC_DIR)/main.c $(SRC_DIR)/close.c $(SRC_DIR)/ft_mlx_pixel_put.c \
 				$(SRC_DIR)/ft_empty_circle.c $(SRC_DIR)/ft_square.c $(SRC_DIR)/ft_line.c \
 				$(SRC_DIR)/ft_filled_circle.c $(SRC_DIR)/key_press.c $(SRC_DIR)/ft_init.c \
-				$(SRC_DIR)/ft_move.c
+				$(SRC_DIR)/ft_move.c $(SRC_DIR)/ft_putendl_fd.c $(SRC_DIR)/ft_check_args.c \
+				$(GNL_DIR)/$(GNL).c $(GNL_DIR)/$(GNL)_utils.c  $(SRC_DIR)/ft_strncmp.c  \
+				$(SRC_DIR)/ft_map.c
 
-HEAD =		-I ./$(NAME).h -I ./$(MLX_DIR) -L ./$(MLX_DIR)
+
+HEAD =		-I ./$(NAME).h -I ./$(GNL).h -I ./$(MLX_DIR) -L ./$(MLX_DIR)
 
 OBJS =		$(patsubst $(SRC_DIR)%.c, $(OBJS_DIR)%.o, $(SRCS)) #subst in directory
 
@@ -42,7 +47,7 @@ fclean: clean
 re: fclean all
 
 run: re
-	./cub3D
+	./cub3D $(ARGS)
 
 debug: $(MLX) $(OBJS)
 	$(CC) -g $(FLAGS_MLX) $(FLAGS_CC) $(OBJS) $(HEAD) $(MLX) -o "cub3D_debug"

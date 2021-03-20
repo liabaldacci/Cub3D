@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 20:03:34 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/18 20:48:52 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/19 18:27:12 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,6 @@ void ft_init_struct(t_vars *strct)
     strct->window_width = 800;
     strct->window_height = 800;
     strct->window_title = "Hello world!";
-    
-    // //creates an image that will be pushed to the screen. This takes up less computing space and resources.
-    // strct->img = mlx_new_image(strct->mlx, 800, 800);
-            
-    // //not sure what this does. Probably gets information from something called addr inside the struct that
-    // //contains the info necessary to use graphics.
-    // strct->addr = mlx_get_data_addr(strct->img, &(strct->bits_per_pixel),
-    //         &(strct->line_length), &(strct->endian));
 }
 
 int    ft_init_window(t_vars *strct) {

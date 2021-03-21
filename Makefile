@@ -7,7 +7,7 @@ OBJS_DIR =	objs
 GNL_DIR = GNL
 
 CC =		clang -g -fsanitize=address
-FLAGS_CC =	-Wall -Wextra -Werror -g
+FLAGS_CC =	-Wall -Wextra -Werror
 FLAGS_MLX =	-lm -lbsd -lX11 -lXext -lmlx
 					
 MLX =		$(MLX_DIR)/libmlx.a
@@ -28,7 +28,7 @@ RM =		/bin/rm -rf
 all: $(NAME)
 
 $(NAME): $(MLX) $(OBJS) #$@ means the output file will be ./cub3D instead of ./a.out
-	$(CC) $(FLAGS_MLX) $(FLAGS_CC) $(OBJS) $(HEAD) $(MLX) -o $@
+	$(CC) $(FLAGS_CC) $(OBJS) $(HEAD) $(FLAGS_MLX) $(MLX) $(FLAGS_LIBFT) $(LIBFT) -o $@
 
 $(OBJS_DIR)/%.o: $(SRC_DIR)/%.c
 	mkdir -p $(OBJS_DIR)
@@ -36,6 +36,9 @@ $(OBJS_DIR)/%.o: $(SRC_DIR)/%.c
 
 $(MLX):
 	make -C $(MLX_DIR)
+
+$(LIBFT):
+	make -C $(LIBFT_DIR)
 
 clean:
 	make clean -C $(MLX_DIR)

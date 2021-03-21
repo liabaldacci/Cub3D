@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 16:04:36 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/19 19:02:38 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/21 17:08:22 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int					do_two(char **line, char *s, char **ptr)
 {
 	*line = ft_substr(s, 0, ft_strlen(s));
 	free(*ptr);
-	*ptr = NULL;
 	return (0);
 }
 

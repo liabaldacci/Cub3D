@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 21:24:09 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/19 20:22:18 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/21 16:46:58 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int     ft_check_args(t_vars *vars, int argc, char **argv);
 int     ft_strncmp(const char *s1, const char *s2, size_t n);
 int     ft_check_input(t_vars *strct);
 void    ft_black_screen(t_vars *strct);
+int     ft_eval_line(char   *line);
 
 
 #endif

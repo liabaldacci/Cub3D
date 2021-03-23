@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 21:24:09 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/22 22:08:44 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/23 19:20:32 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void    ft_empty_circle(t_vars *strct, int x, int y, int radius, int color);
 void    ft_filled_circle(t_vars *strct, int x, int y, int radius, int color);
 int     key_press(int keycode, t_vars *strct);
 int     key_release(int keycode, t_vars *strct);
-int     close_program(void);
+int     close_program(t_vars *strct);
 int     ft_move(t_vars *strct);
 void	ft_putendl_fd(char *s, int fd);
 int     ft_check_argument(char *s);
@@ -66,14 +66,14 @@ int     ft_check_input(t_vars *strct);
 void    ft_black_screen(t_vars *strct);
 int     ft_eval_line(char *line, t_vars *strct);
 int     ft_resolution(char *str, t_vars *strct);
-int	ft_isdigit(int c);
+int     ft_isdigit(int c);
 int		ft_atoi(const char *str);
 char	*ft_strtrim(char const *s1, char const *set);
-char			**ft_split(char const *s, char c);
-char		*ft_substr(char const *s, unsigned int start, size_t len);
-char		*ft_strchr(const char *s, int c);
-size_t		ft_strlen(const char *str);
-char		*ft_strdup(const char *s1);
+char	**ft_split(char const *s, char c);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strchr(const char *s, int c);
+size_t	ft_strlen(const char *str);
+char	*ft_strdup(const char *s1);
 
 
 

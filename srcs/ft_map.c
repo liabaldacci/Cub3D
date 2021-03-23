@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 19:26:21 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/22 23:21:35 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/23 19:21:20 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,20 @@ int         ft_check_input(t_vars *strct)
     int     a;
     
     line = NULL;
-
     fd = open(strct->map_path, O_RDONLY);
-    
     while(get_next_line(fd, &line) == 1)
     {
-        if (ft_eval_line(line, strct) == -1)
-            break;
+        if (ft_eval_line(line, strct) == -1) {
+            close(fd);
+            free(line);
+            return (-1);
+        }
         free(line);
     }
-    if (ft_eval_line(line, strct) == -1)
-        return (-1);
-    // if NO, SO, EA, WE, S
-    //     ft_texture();
-    // else if C, F
-    //     ft_color();
-    // else if R
-    //     ft_res();
+    if (ft_eval_line(line, strct) == -1){
+        close(fd);
+        free(line);
+        return (-1);}
     close(fd);
     free(line);
     ft_putendl_fd("done", 1);
@@ -45,12 +42,10 @@ int         ft_check_input(t_vars *strct)
 
 int     ft_eval_line(char *line, t_vars *strct) {
     int i = 0;
-    //ft_putendl_fd(line, 1);
     i = 0;
     if ((line[i] == 'R') && line[i + 1] == ' ') {
-        ft_putendl_fd("ft_res", 1);
-        ft_resolution(line, strct);
-        //RESOLVER MLX_GET_SCREEN_SIZE
+        if (ft_resolution(line, strct) == -1)
+            return (-1);
     }
     else if ((line[i] == 'F' || line[i] == 'C') && line[i + 1] == ' ') {
         //ft_putendl_fd("ft_color", 1);
@@ -71,7 +66,6 @@ int     ft_eval_line(char *line, t_vars *strct) {
     }
     else {
         ft_putendl_fd("Map is not valid", 1); //Corrigir isso, pois ele tem que checar o mapa por último tb
-        free (line);
         return (-1);
     }
     return (1);

@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 21:04:17 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/22 23:22:06 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/23 18:55:04 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,21 @@ int     ft_resolution(char *str, t_vars *strct) {
     int i;
 
     i = 1;
-    screen_height = 2000;
-    screen_width = 2000;
-    //mlx_get_screen_size(strct->mlx, &screen_width, &screen_height);
+    mlx_get_screen_size(strct->mlx, &screen_width, &screen_height);
+    printf("screen size: %i x %i.\n", screen_width, screen_height);
     ft_split_numbers(str, i, &width, &height);
-    if (ft_validate_numbers(width, height) == -1)
+    if (ft_validate_numbers(width, height) == -1){
+        free(height);
+        free(width);
         return (-1);
+    }
     strct->window_width = ft_atoi(width);
     strct->window_height = ft_atoi(height);
     if ((strct->window_width > screen_width)
         || (strct->window_height > screen_height)){
         ft_putendl_fd("Your window is too big!!!", 1);
+        free(height);
+        free(width);
         return (-1);
     }
     free(height);

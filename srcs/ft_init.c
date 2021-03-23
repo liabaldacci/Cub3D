@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 20:03:34 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/19 18:27:12 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/23 18:44:30 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void ft_init_struct(t_vars *strct)
 {
-    strct->window_width = 800;
-    strct->window_height = 800;
     strct->window_title = "Hello world!";
 }
 
@@ -23,9 +21,8 @@ int    ft_init_window(t_vars *strct) {
     //initializes struct containing information regarding mlx and the window size
     ft_init_struct(strct);
     //creates a window with the height and width specified in ft_init_win
-    strct->mlx = mlx_init();
-    strct->mlx_win = mlx_new_window(strct->mlx, strct->window_height,
-        strct->window_width, strct->window_title);
+    strct->mlx_win = mlx_new_window(strct->mlx, strct->window_width,
+        strct->window_height, strct->window_title);
     //function returns an error if the window is not created properly.
     if (!strct->mlx_win){
         printf("Error initializing strct.");

@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 19:28:38 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/19 20:31:25 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/23 19:19:21 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,11 @@ int         main(int argc, char **argv)
 {
     t_vars  strct;
     
-
-    if ((ft_check_args(&strct, argc, argv) < 0) || (ft_check_input(&strct) < 0))
+    strct.mlx = mlx_init();
+    if ((ft_check_args(&strct, argc, argv) < 0) || (ft_check_input(&strct) < 0)){
+        close_program();
         return(-1);
+    }
     if (ft_init_window(&strct) == -1){
         printf("Error initializing window.");
         close_program();

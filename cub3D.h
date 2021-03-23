@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 21:24:09 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/21 16:46:58 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/22 22:08:44 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <math.h>   
-# include <fcntl.h> 
+# include <fcntl.h>
+#include <string.h>
 
 typedef struct  s_vars
 {
@@ -63,7 +64,17 @@ int     ft_check_args(t_vars *vars, int argc, char **argv);
 int     ft_strncmp(const char *s1, const char *s2, size_t n);
 int     ft_check_input(t_vars *strct);
 void    ft_black_screen(t_vars *strct);
-int     ft_eval_line(char   *line);
+int     ft_eval_line(char *line, t_vars *strct);
+int     ft_resolution(char *str, t_vars *strct);
+int	ft_isdigit(int c);
+int		ft_atoi(const char *str);
+char	*ft_strtrim(char const *s1, char const *set);
+char			**ft_split(char const *s, char c);
+char		*ft_substr(char const *s, unsigned int start, size_t len);
+char		*ft_strchr(const char *s, int c);
+size_t		ft_strlen(const char *str);
+char		*ft_strdup(const char *s1);
+
 
 
 #endif

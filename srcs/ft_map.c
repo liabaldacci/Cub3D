@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 19:26:21 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/21 17:10:17 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/22 23:21:35 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ int         ft_check_input(t_vars *strct)
     
     while(get_next_line(fd, &line) == 1)
     {
-        if (ft_eval_line(line) == -1)
+        if (ft_eval_line(line, strct) == -1)
             break;
         free(line);
     }
-    if (ft_eval_line(line) == -1)
+    if (ft_eval_line(line, strct) == -1)
         return (-1);
     // if NO, SO, EA, WE, S
     //     ft_texture();
@@ -43,28 +43,30 @@ int         ft_check_input(t_vars *strct)
     return (0);
 }
 
-int     ft_eval_line(char   *line) {
+int     ft_eval_line(char *line, t_vars *strct) {
     int i = 0;
-    ft_putendl_fd(line, 1);
+    //ft_putendl_fd(line, 1);
     i = 0;
     if ((line[i] == 'R') && line[i + 1] == ' ') {
         ft_putendl_fd("ft_res", 1);
+        ft_resolution(line, strct);
+        //RESOLVER MLX_GET_SCREEN_SIZE
     }
     else if ((line[i] == 'F' || line[i] == 'C') && line[i + 1] == ' ') {
-        ft_putendl_fd("ft_color", 1);
+        //ft_putendl_fd("ft_color", 1);
     }
     else if (((line[i] == 'N' || line[i] == 'S') && line[i + 1] == 'O' && line[i + 2] == ' ')
         || (line[i] == 'W' && line[i + 1] == 'E' && line[i + 2] == ' ') 
         || (line[i] == 'E' && line[i + 1] == 'A' && line[i + 2] == ' ')
         || (line[i] == 'S' && line[i + 1] == ' ')) {
-        ft_putendl_fd("ft_textures", 1);
+        //ft_putendl_fd("ft_textures", 1);
         }
     else if ((line[i] >= 8 && line[i] <= 13) || (line[i] == ' '))
         return (1);
     else if (ft_strncmp(line, "\000", 5) == 0)
         return (1);
     else if (line[i] == '1'){
-        ft_putendl_fd("ft_map", 1);
+        //ft_putendl_fd("ft_map", 1);
         return (1);
     }
     else {

@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 22:15:25 by gadoglio          #+#    #+#             */
-/*   Updated: 2020/03/09 14:28:53 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/22 22:03:26 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include <stdlib.h>
 # include <string.h>
 
-int		ft_strlen(char *str);
-char	*ft_substr(char *s, int start, int end);
+int		ft_strlen_gnl(char *str);
+char	*ft_substr_gnl(char *s, int start, int end);
 char	*ft_strjoin(char *s1, char *s2);
 int		find_char(char *str, char c);
 int		get_next_line(int fd, char **line);

@@ -6,13 +6,13 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/06 17:04:57 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/21 16:15:58 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/22 22:03:44 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int			ft_strlen(char *str)
+int			ft_strlen_gnl(char *str)
 {
 	int		i;
 
@@ -38,7 +38,7 @@ char		*ft_calloc(int size)
 	return (str);
 }
 
-char		*ft_substr(char *s, int start, int end)
+char		*ft_substr_gnl(char *s, int start, int end)
 {
 	char	*new;
 	int		size;
@@ -63,8 +63,8 @@ char		*ft_strjoin(char *s1, char *s2)
 	int		size2;
 	int		i;
 
-	size1 = ft_strlen(s1);
-	size2 = ft_strlen(s2);
+	size1 = ft_strlen_gnl(s1);
+	size2 = ft_strlen_gnl(s2);
 	if (!(new = ft_calloc(size1 + size2 + 1)))
 		return (0);
 	i = 0;

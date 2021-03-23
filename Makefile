@@ -16,7 +16,10 @@ SRCS =		$(SRC_DIR)/main.c $(SRC_DIR)/close.c $(SRC_DIR)/ft_mlx_pixel_put.c \
 				$(SRC_DIR)/ft_filled_circle.c $(SRC_DIR)/key_press.c $(SRC_DIR)/ft_init.c \
 				$(SRC_DIR)/ft_move.c $(SRC_DIR)/ft_putendl_fd.c $(SRC_DIR)/ft_check_args.c \
 				$(GNL_DIR)/$(GNL).c $(GNL_DIR)/$(GNL)_utils.c  $(SRC_DIR)/ft_strncmp.c  \
-				$(SRC_DIR)/ft_map.c
+				$(SRC_DIR)/ft_map.c $(SRC_DIR)/ft_isdigit.c $(SRC_DIR)/ft_atoi.c \
+				$(SRC_DIR)/ft_strtrim.c $(SRC_DIR)/ft_split.c $(SRC_DIR)/ft_strchr.c \
+				$(SRC_DIR)/map_info.c $(SRC_DIR)/ft_strlen.c $(SRC_DIR)/ft_substr.c \
+				$(SRC_DIR)/ft_strdup.c
 
 
 HEAD =		-I ./$(NAME).h -I ./$(GNL).h -I ./$(MLX_DIR) -L ./$(MLX_DIR)
@@ -28,7 +31,7 @@ RM =		/bin/rm -rf
 all: $(NAME)
 
 $(NAME): $(MLX) $(OBJS) #$@ means the output file will be ./cub3D instead of ./a.out
-	$(CC) $(FLAGS_CC) $(OBJS) $(HEAD) $(FLAGS_MLX) $(MLX) $(FLAGS_LIBFT) $(LIBFT) -o $@
+	$(CC) $(FLAGS_CC) $(OBJS) $(HEAD) $(FLAGS_MLX) $(MLX) -o $@
 
 $(OBJS_DIR)/%.o: $(SRC_DIR)/%.c
 	mkdir -p $(OBJS_DIR)
@@ -36,9 +39,6 @@ $(OBJS_DIR)/%.o: $(SRC_DIR)/%.c
 
 $(MLX):
 	make -C $(MLX_DIR)
-
-$(LIBFT):
-	make -C $(LIBFT_DIR)
 
 clean:
 	make clean -C $(MLX_DIR)

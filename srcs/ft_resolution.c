@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_info.c                                         :+:      :+:    :+:   */
+/*   ft_resolution.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 21:04:17 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/23 18:55:04 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/23 22:47:58 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ int     ft_split_numbers(char *str, int i, char **width, char **height){
     while (str[i++] != ' ' && str[i] != '\0')
         len_height++;
     *height = ft_substr(str, j, len_height + 1);
-    ft_putendl_fd(*width, 1);
-    ft_putendl_fd(*height, 1);
     return (0);
 }
 
@@ -63,7 +61,6 @@ int     ft_resolution(char *str, t_vars *strct) {
 
     i = 1;
     mlx_get_screen_size(strct->mlx, &screen_width, &screen_height);
-    printf("screen size: %i x %i.\n", screen_width, screen_height);
     ft_split_numbers(str, i, &width, &height);
     if (ft_validate_numbers(width, height) == -1){
         free(height);

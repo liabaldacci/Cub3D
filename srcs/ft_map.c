@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 19:26:21 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/23 19:21:20 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/23 21:58:19 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int         ft_check_input(t_vars *strct)
     int     fd;
     char    *line;
     int     i;
-    int     a;
     
     line = NULL;
     fd = open(strct->map_path, O_RDONLY);
@@ -49,12 +48,15 @@ int     ft_eval_line(char *line, t_vars *strct) {
     }
     else if ((line[i] == 'F' || line[i] == 'C') && line[i + 1] == ' ') {
         //ft_putendl_fd("ft_color", 1);
+        if (ft_colors(line, strct) == -1)
+            return (-1);
     }
     else if (((line[i] == 'N' || line[i] == 'S') && line[i + 1] == 'O' && line[i + 2] == ' ')
         || (line[i] == 'W' && line[i + 1] == 'E' && line[i + 2] == ' ') 
         || (line[i] == 'E' && line[i + 1] == 'A' && line[i + 2] == ' ')
         || (line[i] == 'S' && line[i + 1] == ' ')) {
-        //ft_putendl_fd("ft_textures", 1);
+        if (ft_textures(line, strct) == -1)
+            return (-1);
         }
     else if ((line[i] >= 8 && line[i] <= 13) || (line[i] == ' '))
         return (1);

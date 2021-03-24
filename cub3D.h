@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 21:24:09 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/23 19:20:32 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/23 22:07:29 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,21 @@ typedef struct  s_vars
     int         window_height;
     int         window_width;
     char        *window_title;
+    int         R_ceiling;
+    int         G_ceiling;
+    int         B_ceiling;
+    int         R_floor;
+    int         G_floor;
+    int         B_floor;
+    char        *NO_texture;
+    char        *SO_texture;
+    char        *WE_texture;
+    char        *EA_texture;
+    char        *Sprite_texture;
     int         up;
     int         down;
     int         left;
     int         right;
-    int         mouse_x;
-    int         mouse_y;
     int         playerX;
     int         playerY;
     int         player_size;
@@ -74,6 +83,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strchr(const char *s, int c);
 size_t	ft_strlen(const char *str);
 char	*ft_strdup(const char *s1);
+int     ft_colors(char *str, t_vars *strct);
+int     ft_textures(char *str, t_vars *strct);
+
 
 
 

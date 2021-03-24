@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 19:28:38 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/23 19:19:21 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/23 22:46:32 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,12 @@ int         main(int argc, char **argv)
     
     strct.mlx = mlx_init();
     if ((ft_check_args(&strct, argc, argv) < 0) || (ft_check_input(&strct) < 0)){
-        close_program();
+        close_program(&strct);
         return(-1);
     }
     if (ft_init_window(&strct) == -1){
         printf("Error initializing window.");
-        close_program();
+        close_program(&strct);
     };
     //mlx_key_hook(strct.mlx_win, key_hook, &strct);
     //creates an image that will be pushed to the screen. This takes up less computing space and resources.
@@ -98,10 +98,15 @@ int         main(int argc, char **argv)
     mlx_loop_hook(strct.mlx, ft_update, &strct);
     mlx_loop(strct.mlx);
 
+    free(strct.mlx);
+    free(strct.NO_texture);
+    free(strct.SO_texture);
+    free(strct.WE_texture);
+    free(strct.EA_texture);
+    free(strct.Sprite_texture);
     mlx_destroy_image(strct.mlx, strct.img);
     mlx_destroy_window(strct.mlx, strct.mlx_win);
     mlx_destroy_display(strct.mlx);
-    free(strct.mlx);
     
     return (0);
 }

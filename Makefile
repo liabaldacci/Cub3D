@@ -18,8 +18,8 @@ SRCS =		$(SRC_DIR)/main.c $(SRC_DIR)/close.c $(SRC_DIR)/ft_mlx_pixel_put.c \
 				$(GNL_DIR)/$(GNL).c $(GNL_DIR)/$(GNL)_utils.c  $(SRC_DIR)/ft_strncmp.c  \
 				$(SRC_DIR)/ft_map.c $(SRC_DIR)/ft_isdigit.c $(SRC_DIR)/ft_atoi.c \
 				$(SRC_DIR)/ft_strtrim.c $(SRC_DIR)/ft_split.c $(SRC_DIR)/ft_strchr.c \
-				$(SRC_DIR)/map_info.c $(SRC_DIR)/ft_strlen.c $(SRC_DIR)/ft_substr.c \
-				$(SRC_DIR)/ft_strdup.c
+				$(SRC_DIR)/ft_resolution.c $(SRC_DIR)/ft_strlen.c $(SRC_DIR)/ft_substr.c \
+				$(SRC_DIR)/ft_strdup.c $(SRC_DIR)/ft_colors.c $(SRC_DIR)/ft_textures.c
 
 
 HEAD =		-I ./$(NAME).h -I ./$(GNL).h -I ./$(MLX_DIR) -L ./$(MLX_DIR)

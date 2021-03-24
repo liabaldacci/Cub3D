@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 20:00:22 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/19 18:17:42 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/23 20:46:08 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int key_press(int keycode, t_vars *strct) {
     //if the 'esc' key has been pressed the program closes.
     else if (keycode == 65307) {
         mlx_destroy_window(strct->mlx, strct->mlx_win);
-        close_program();}
+        close_program(strct);}
     return (0);
 }
 int key_release(int keycode, t_vars *strct) {

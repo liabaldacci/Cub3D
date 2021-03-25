@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 19:28:38 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/23 22:46:32 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/24 20:39:45 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ int         main(int argc, char **argv)
     t_vars  strct;
     
     strct.mlx = mlx_init();
-    if ((ft_check_args(&strct, argc, argv) < 0) || (ft_check_input(&strct) < 0)){
+    if ((ft_check_args(&strct, argc, argv) < 0) || (ft_check_input(&strct) < 0)
+        || ft_check_map(&strct)){
         close_program(&strct);
         return(-1);
     }

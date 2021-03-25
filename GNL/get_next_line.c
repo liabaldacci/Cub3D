@@ -6,13 +6,13 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 16:04:36 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/22 22:03:41 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/25 20:07:37 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-#define BUFFER_SIZE 40
+#define BUFFER_SIZE 100
 
 char				*do_one(char **line, char *s, char **ptr, int i)
 {
@@ -36,7 +36,10 @@ int					get_next_line(int fd, char **line)
 	char			*temp;
 	int				i;
 
-	if (BUFFER_SIZE <= 0 || !line || (read(fd, NULL, 0) < 0) || fd < 0)
+	if (BUFFER_SIZE <= 0 
+        || !line 
+        || (read(fd, NULL, 0) < 0) 
+        || fd < 0)
 		return (-1);
 	if ((!(str) && !(str = ft_calloc(1)))
 			|| !(buff = malloc(BUFFER_SIZE + 1)))

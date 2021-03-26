@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 19:47:10 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/25 21:54:11 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/25 22:45:24 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int         ft_check_map(t_vars *strct)
                 line_nbr++;
             }
         }
+        free(line);
     }
     if (ft_strchr(line, '1') != 0){
         printf("%s",line);

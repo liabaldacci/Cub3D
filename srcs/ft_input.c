@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 19:26:21 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/24 21:55:49 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/25 21:13:48 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int         ft_check_input(t_vars *strct)
 }
 
 int     ft_eval_line(char *line, t_vars *strct) {
-    int i = 0;
+    int i;
     i = 0;
     if ((line[i] == 'R') && line[i + 1] == ' ') {
         if (ft_resolution(line, strct) == -1)
@@ -65,7 +65,7 @@ int     ft_eval_line(char *line, t_vars *strct) {
         if (ft_strchr(line, '1') != 0) {
             if (ft_strlen(line) > strct->map_width)
                 strct->map_width = ft_strlen(line);
-            strct->window_height++;
+            strct->map_height++;
             return (0);
             }
         else

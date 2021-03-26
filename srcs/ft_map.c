@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 19:47:10 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/25 20:09:25 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/25 21:54:11 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ int         ft_check_map(t_vars *strct)
     int     i;
     int     gnl_result;
 
+    line_nbr++;
     strct->map = (char*)ft_calloc((strct->map_width + 1));
     line = NULL;
     fd = open(strct->map_path, O_RDONLY);
-    gnl_result = get_next_line(fd, &line);
-    while(gnl_result == 1)
+    while(get_next_line(fd, &line) == 1)
     {
         if (ft_strchr("NSWE\t\n\v\f\r", line[0])) {
             free(line);
@@ -37,7 +37,6 @@ int         ft_check_map(t_vars *strct)
                 line_nbr++;
             }
         }
-        free(line);
     }
     if (ft_strchr(line, '1') != 0){
         printf("%s",line);

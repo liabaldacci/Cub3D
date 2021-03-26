@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/23 22:15:25 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/25 19:30:59 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/25 21:37:08 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
+# include <stdio.h>
 
 int		ft_strlen_gnl(char *str);
 char	*ft_substr_gnl(char *s, int start, int end);

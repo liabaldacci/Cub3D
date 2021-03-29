@@ -20,7 +20,7 @@ SRCS =		$(SRC_DIR)/main.c $(SRC_DIR)/close.c $(SRC_DIR)/ft_mlx_pixel_put.c \
 				$(SRC_DIR)/ft_strtrim.c $(SRC_DIR)/ft_split.c $(SRC_DIR)/ft_strchr.c \
 				$(SRC_DIR)/ft_resolution.c $(SRC_DIR)/ft_strlen.c $(SRC_DIR)/ft_substr.c \
 				$(SRC_DIR)/ft_strdup.c $(SRC_DIR)/ft_colors.c $(SRC_DIR)/ft_textures.c \
-				$(SRC_DIR)/ft_input.c
+				$(SRC_DIR)/ft_input.c $(SRC_DIR)/ft_render.c
 
 
 HEAD =		-I ./$(NAME).h -I ./$(GNL).h -I ./$(MLX_DIR) -L ./$(MLX_DIR)

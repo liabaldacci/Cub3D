@@ -6,12 +6,13 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 21:24:09 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/24 21:51:39 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/29 19:22:14 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
+# define PI 3.14159265359
 
 # include "./mlx/mlx.h"
 # include "./GNL/get_next_line.h"
@@ -20,6 +21,22 @@
 # include <math.h>   
 # include <fcntl.h>
 #include <string.h>
+
+typedef struct  s_player
+{
+    
+    int         playerX;
+    int         playerY;
+    char        direction;
+    int         player_width;
+    int         player_height;
+    int         turn_direction; //-1 for left and +1 for right
+    int         walk_direction; //-1 for going backwards and +1 for going forward
+    double      rotation_angle;
+    double      walk_speed;
+    double      turn_speed;
+    
+}               t_player;
 
 typedef struct  s_vars
 {
@@ -48,13 +65,15 @@ typedef struct  s_vars
     int         down;
     int         left;
     int         right;
-    int         playerX;
-    int         playerY;
-    int         player_size;
     char        *map_path;
     int         map_width;
     int         map_height;
-    char        *map;
+    char        **map;
+    int         tile_X;
+    int         tile_Y;
+    int         fov_angle;
+    int         num_of_rays;
+    t_player    player;
     
 }               t_vars;
 
@@ -89,6 +108,8 @@ char	*ft_strdup(const char *s1);
 int     ft_colors(char *str, t_vars *strct);
 int     ft_textures(char *str, t_vars *strct);
 int     ft_check_map(t_vars *strct);
+int     ft_map(char *str, t_vars *strct,int line_nbr);
+int     ft_render_map(t_vars *strct);
 
 
 

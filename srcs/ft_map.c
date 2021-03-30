@@ -6,21 +6,26 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 19:47:10 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/29 20:45:34 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/29 22:33:20 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-void        ft_get_direction(t_vars *strct){
-    if (strct->direction == 'N')
+int             ft_get_direction(t_vars *strct){
+    if (strct->player.direction == 'N')
         strct->player.rotation_angle = PI / 2;
-    else if (strct->direction == 'W')
+    else if (strct->player.direction == 'W')
         strct->player.rotation_angle = PI;
-    else if (strct->direction == 'S')
+    else if (strct->player.direction == 'S')
         strct->player.rotation_angle = (3 * PI) / 2;
-    else if (strct->direction == 'E')
+    else if (strct->player.direction == 'E')
         strct->player.rotation_angle = 0;
+    else{
+        ft_putendl_fd("There is no player position.", 1);
+        return (-1);
+    }
+    return (0);
 }
 
 int         ft_map_is_valid(t_vars *strct){
@@ -68,6 +73,47 @@ int         ft_map_is_valid(t_vars *strct){
     return (0);
 }
 
+int     ft_map(char *str, t_vars *strct, int line_nbr) {
+    int i;
+    char    *temp;
+
+    i = 1;
+    while (str[ft_strlen(str)-i] == ' ')
+        i++;
+    if (str[ft_strlen(str)-i] != '1')
+        return (-1);
+    i = 0;
+    temp = ft_calloc((strct->map_width + 1) * sizeof(char));
+    while (str[i] != '\0' && ft_strchr("012NSWE \t\n\v\f\r", str[i])){
+        if (ft_strchr(" \t\n\v\f\r", str[i]))
+            temp[i] = 'X';
+        else if (ft_strchr("NSWE", str[i])){
+            if (strct->player.playerX != 0 || strct->player.playerY != 0){
+                ft_putendl_fd("Player position is invalid.", 1);
+                free(temp);
+                return (-1);
+            }
+            strct->player.playerX = (i * strct->tile_X) + (strct->tile_X / 2);
+            strct->player.playerY = (line_nbr * strct ->tile_Y) + (strct ->tile_Y / 2);
+            strct->player.direction = str[i];
+            temp[i] = '0';
+        }
+        else if (ft_strchr("012", str[i]))
+            temp[i] = str[i];
+        else
+            return (-1);
+        i++;
+    }
+    if (strct->map_width > ft_strlen(str)){
+        while (i < strct->map_width){
+            temp[i] = 'X';
+            i++;
+        }
+    }
+    strct->map[line_nbr] = temp;
+    return (1);
+}
+
 int         ft_check_map(t_vars *strct)
 {
     int     fd;
@@ -79,10 +125,6 @@ int         ft_check_map(t_vars *strct)
     line = NULL;
     fd = open(strct->map_path, O_RDONLY);
     strct->map = (char **)ft_calloc((strct->map_height + 1) * sizeof(char *));
-    // while (line_nbr <= strct->map_height){
-    //     strct->map[line_nbr] = ft_calloc((strct->map_width + 1) * sizeof(char));
-    //     line_nbr++;
-    // }
     while(get_next_line(fd, &line) == 1)
     {
         if (ft_strchr("NSWE\t\n\v\f\r", line[0])) {
@@ -117,48 +159,7 @@ int         ft_check_map(t_vars *strct)
         ft_putendl_fd("Map is not valid.", 1);
         return (-1);
     }
-    // ft_putendl_fd("done", 1);
-    // while (*strct->map){
-    //     printf("%s\n", *strct->map);
-    //     *strct->map++;}
-    return (0);
-}
-
-int     ft_map(char *str, t_vars *strct, int line_nbr) {
-    int i;
-    char    *temp;
-
-    i = 0;
-    if ((str[ft_strlen(str)-1]) != '1')
+    if (ft_get_direction(strct) == -1)
         return (-1);
-    temp = ft_calloc((strct->map_width + 1) * sizeof(char));
-    while (str[i] != '\0' && ft_strchr("012NSWE \t\n\v\f\r", str[i])){
-        if (ft_strchr(" \t\n\v\f\r", str[i]))
-            temp[i] = 'X';
-        else if (ft_strchr("NSWE", str[i])){
-            if (strct->player.playerX != 0 || strct->player.playerY != 0){
-                ft_putendl_fd("Player position is invalid.", 1);
-                free(temp);
-                return (-1);
-            }
-            strct->player.playerX = i;
-            strct->player.playerY = line_nbr;
-            strct->player.direction = str[i];
-            ft_get_direction(strct);
-            temp[i] = '0';
-        }
-        else if (ft_strchr("012", str[i]))
-            temp[i] = str[i];
-        else
-            return (-1);
-        i++;
-    }
-    if (strct->map_width > ft_strlen(str)){
-        while (i < strct->map_width){
-            temp[i] = 'X';
-            i++;
-        }
-    }
-    strct->map[line_nbr] = temp;
-    return (1);
+    return (0);
 }

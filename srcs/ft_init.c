@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 20:03:34 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/29 21:28:31 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/29 22:07:28 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ void ft_init_struct(t_vars *strct)
     strct->right = 0;
     strct->up = 0;
     strct->down = 0;
+    strct->tile_X = 0;
+    strct->tile_Y = 0;
 }
 
 int    ft_init_window(t_vars *strct) {
-    //initializes struct containing information regarding mlx and the window size
-    ft_init_struct(strct);
     //creates a window with the height and width specified in ft_init_win
     strct->mlx_win = mlx_new_window(strct->mlx, strct->window_width,
         strct->window_height, strct->window_title);

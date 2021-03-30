@@ -6,34 +6,34 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 19:28:38 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/29 21:13:41 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/29 21:58:42 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-// void ft_render(t_vars *strct) {
-//     //todo render map
-//     //todo render rays
-//     //todo render player.player
-// }
+void ft_render(t_vars *strct) {
+    ft_black_screen(strct);
+    ft_render_map(strct);
+    ft_square(strct, strct->player.playerX, strct->player.playerY,
+        strct->player.player_width, strct->player.player_height, 0x00FF0000);
+    mlx_put_image_to_window(strct->mlx, strct->mlx_win, strct->img, 0, 0);
+    //todo render map
+    //todo render rays
+    //todo render player.player
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 
-// void game(t_vars *strct) {
-//     ft_setup(strct);
-//     ft_update(strct);
-//     ft_render(strct);
-// }
+void ft_game(t_vars *strct) {
+    ft_update(strct);
+    ft_render(strct);
+}
 
 // ////////////////////////////////////////////////////////////////////////////////
 
 int ft_update(t_vars *strct) {
-    ft_black_screen(strct);
     ft_move(strct);
-    ft_square(strct, strct->player.playerX, strct->player.playerY,
-        strct->player.player_width, strct->player.player_height, 0x00FF0000);
-    mlx_put_image_to_window(strct->mlx, strct->mlx_win, strct->img, 0, 0);
     return (0);
 }
 
@@ -59,12 +59,8 @@ int         main(int argc, char **argv)
     mlx_hook(strct.mlx_win, 3, 1L<<1, key_release, &strct);
     mlx_hook(strct.mlx_win, 33, 1L<<17, close_program, &strct);
     
-    //ft_update(&strct);
-    //ft_mlx_pixel_put(&strct, 5, 5, 0x00FF0000);
-    //ft_square(&strct, 5, 5, 100, 100, 0x00FF0000);
-    //mlx_put_image_to_window(strct.mlx, strct.mlx_win, strct.img, 0, 0);
     //no idea what this does. I think it keeps the window open.
-    mlx_loop_hook(strct.mlx, ft_update, &strct);
+    mlx_loop_hook(strct.mlx, ft_game, &strct);
     mlx_loop(strct.mlx);
 
     free(strct.mlx);

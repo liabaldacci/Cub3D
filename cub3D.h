@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 21:24:09 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/29 20:47:20 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/29 22:20:24 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ typedef struct  s_vars
     int         map_width;
     int         map_height;
     char        **map;
-    char        direction;
+    int         tile_X;
+    int         tile_Y;
     t_player    player;
     
 }               t_vars;
@@ -108,6 +109,7 @@ int     ft_colors(char *str, t_vars *strct);
 int     ft_textures(char *str, t_vars *strct);
 int     ft_check_map(t_vars *strct);
 int     ft_map(char *str, t_vars *strct, int line_nbr);
+int     ft_render_map(t_vars *strct);
 
 
 

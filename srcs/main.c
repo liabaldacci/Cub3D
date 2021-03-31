@@ -6,19 +6,19 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 19:28:38 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/29 21:58:42 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/31 19:25:50 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+//TODO: continuar tutorial pikuma. Melhorar player movement.
 
 #include "../cub3D.h"
 
 void ft_render(t_vars *strct) {
     ft_black_screen(strct);
     ft_render_map(strct);
-    ft_square(strct, strct->player.playerX, strct->player.playerY,
-        strct->player.player_width, strct->player.player_height, 0x00FF0000);
+    ft_render_player(strct);
     mlx_put_image_to_window(strct->mlx, strct->mlx_win, strct->img, 0, 0);
-    //todo render map
     //todo render rays
     //todo render player.player
 }
@@ -33,6 +33,8 @@ void ft_game(t_vars *strct) {
 // ////////////////////////////////////////////////////////////////////////////////
 
 int ft_update(t_vars *strct) {
+    // strct->player.turn_direction = -1;
+    // strct->player.walk_direction = 1;
     ft_move(strct);
     return (0);
 }

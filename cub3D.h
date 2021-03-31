@@ -6,13 +6,13 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 21:24:09 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/29 22:20:24 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/30 21:38:43 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
-# define PI 3.14
+# define PI 3.141592653589793238462643383279502884197169399375105820974944
 
 # include "./mlx/mlx.h"
 # include "./GNL/get_next_line.h"
@@ -30,11 +30,11 @@ typedef struct  s_player
     char        direction;
     int         player_width;
     int         player_height;
-    // int         turn_direction; //-1 for left and +1 for right
-    // int         walk_direction; //-1 for going backwards and +1 for going forward
+    int         turn_direction; //-1 for left and +1 for right
+    int         walk_direction; //-1 for going backwards and +1 for going forward
     double      rotation_angle;
     double      walk_speed;
-    // double      turn_speed;
+    double      turn_speed;
     
 }               t_player;
 
@@ -71,6 +71,7 @@ typedef struct  s_vars
     char        **map;
     int         tile_X;
     int         tile_Y;
+    double      minimap_scale;
     t_player    player;
     
 }               t_vars;
@@ -110,6 +111,7 @@ int     ft_textures(char *str, t_vars *strct);
 int     ft_check_map(t_vars *strct);
 int     ft_map(char *str, t_vars *strct, int line_nbr);
 int     ft_render_map(t_vars *strct);
+int     ft_render_player(t_vars *strct);
 
 
 

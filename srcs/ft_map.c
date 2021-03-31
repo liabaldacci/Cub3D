@@ -6,18 +6,18 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 19:47:10 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/29 22:33:20 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/30 20:50:31 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
 int             ft_get_direction(t_vars *strct){
-    if (strct->player.direction == 'N')
+    if (strct->player.direction == 'S')
         strct->player.rotation_angle = PI / 2;
     else if (strct->player.direction == 'W')
         strct->player.rotation_angle = PI;
-    else if (strct->player.direction == 'S')
+    else if (strct->player.direction == 'N')
         strct->player.rotation_angle = (3 * PI) / 2;
     else if (strct->player.direction == 'E')
         strct->player.rotation_angle = 0;
@@ -93,8 +93,8 @@ int     ft_map(char *str, t_vars *strct, int line_nbr) {
                 free(temp);
                 return (-1);
             }
-            strct->player.playerX = (i * strct->tile_X) + (strct->tile_X / 2);
-            strct->player.playerY = (line_nbr * strct ->tile_Y) + (strct ->tile_Y / 2);
+            strct->player.playerX = ((i * strct->tile_X) + (strct->tile_X / 2)) * strct->minimap_scale;
+            strct->player.playerY = ((line_nbr * strct ->tile_Y) + (strct ->tile_Y / 2)) * strct->minimap_scale;
             strct->player.direction = str[i];
             temp[i] = '0';
         }

@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 20:03:34 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/29 22:07:28 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/31 19:12:44 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void ft_init_struct(t_vars *strct)
 {
     strct->window_title = "Hello world!";
-    strct->player.player_width = 10;
-    strct->player.player_height = 10;
+    strct->player.player_width = 5;
+    strct->player.player_height = 5;
     strct->player.playerX = 0;
     strct->player.playerY = 0;
     strct->player.walk_speed = 25;
@@ -28,6 +28,10 @@ void ft_init_struct(t_vars *strct)
     strct->down = 0;
     strct->tile_X = 0;
     strct->tile_Y = 0;
+    strct->minimap_scale = 1.0;
+    strct->player.walk_direction = 0;
+    strct->player.turn_direction = 0;
+    strct->player.turn_speed = 2 * (PI / 180);
 }
 
 int    ft_init_window(t_vars *strct) {

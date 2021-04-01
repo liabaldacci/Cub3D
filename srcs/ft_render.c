@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 19:11:01 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/30 22:21:11 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/01 15:47:19 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ int     ft_render_player(t_vars *strct){
             scaled_player_y,
             scaled_player_width,
             scaled_player_height, color);
-    // ft_line(strct, scaled_player_x + (scaled_player_width / 2),
-    //     scaled_player_y + (scaled_player_height / 2),
-    //     ((scaled_player_x + cos(strct->player.rotation_angle) * 100 * strct->minimap_scale) + (scaled_player_height / 2)),
-    //     ((scaled_player_y + sin(strct->player.rotation_angle) * 100 * strct->minimap_scale) + (scaled_player_height / 2)), color);
+    drawLine(strct, scaled_player_x + (scaled_player_width / 2),
+        scaled_player_y + (scaled_player_height / 2),
+        (scaled_player_x + cos(strct->player.rotation_angle) * 100 * strct->minimap_scale),
+        (scaled_player_y + sin(strct->player.rotation_angle) * 100 * strct->minimap_scale));
     return (0);
 }

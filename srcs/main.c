@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 19:28:38 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/31 19:25:50 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/01 16:03:54 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,20 @@ void ft_render(t_vars *strct) {
     //todo render player.player
 }
 
-////////////////////////////////////////////////////////////////////////////////
-
-void ft_game(t_vars *strct) {
-    ft_update(strct);
-    ft_render(strct);
-}
-
 // ////////////////////////////////////////////////////////////////////////////////
 
 int ft_update(t_vars *strct) {
     // strct->player.turn_direction = -1;
     // strct->player.walk_direction = 1;
     ft_move(strct);
+    return (0);
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+int ft_game(t_vars *strct) {
+    ft_update(strct);
+    ft_render(strct);
     return (0);
 }
 

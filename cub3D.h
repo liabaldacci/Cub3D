@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 21:24:09 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/30 21:38:43 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/01 16:05:37 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,8 @@ int     ft_check_map(t_vars *strct);
 int     ft_map(char *str, t_vars *strct, int line_nbr);
 int     ft_render_map(t_vars *strct);
 int     ft_render_player(t_vars *strct);
+void    drawLine(t_vars *strct, int x1, int y1, int x2, int y2);
+int     ft_has_wall_at(t_vars *strct, double x, double y);
 
 
 

@@ -6,12 +6,13 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 21:24:09 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/24 21:51:39 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/01 16:05:37 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
+# define PI 3.141592653589793238462643383279502884197169399375105820974944
 
 # include "./mlx/mlx.h"
 # include "./GNL/get_next_line.h"
@@ -20,6 +21,22 @@
 # include <math.h>   
 # include <fcntl.h>
 #include <string.h>
+
+typedef struct  s_player
+{
+    
+    int         playerX;
+    int         playerY;
+    char        direction;
+    int         player_width;
+    int         player_height;
+    int         turn_direction; //-1 for left and +1 for right
+    int         walk_direction; //-1 for going backwards and +1 for going forward
+    double      rotation_angle;
+    double      walk_speed;
+    double      turn_speed;
+    
+}               t_player;
 
 typedef struct  s_vars
 {
@@ -48,15 +65,18 @@ typedef struct  s_vars
     int         down;
     int         left;
     int         right;
-    int         playerX;
-    int         playerY;
-    int         player_size;
     char        *map_path;
     int         map_width;
     int         map_height;
-    char        *map;
+    char        **map;
+    int         tile_X;
+    int         tile_Y;
+    double      minimap_scale;
+    t_player    player;
     
 }               t_vars;
+
+
 
 int     main(int argc, char **argv);
 void    ft_init_struct(t_vars *strct);
@@ -89,6 +109,11 @@ char	*ft_strdup(const char *s1);
 int     ft_colors(char *str, t_vars *strct);
 int     ft_textures(char *str, t_vars *strct);
 int     ft_check_map(t_vars *strct);
+int     ft_map(char *str, t_vars *strct, int line_nbr);
+int     ft_render_map(t_vars *strct);
+int     ft_render_player(t_vars *strct);
+void    drawLine(t_vars *strct, int x1, int y1, int x2, int y2);
+int     ft_has_wall_at(t_vars *strct, double x, double y);
 
 
 

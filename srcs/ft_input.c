@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 19:26:21 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/25 21:13:48 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/03/29 22:06:01 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ int         ft_check_input(t_vars *strct)
         return (-1);}
     close(fd);
     free(line);
-    ft_putendl_fd("done", 1);
+    strct->tile_X = strct->window_width / strct->map_width;
+    strct->tile_Y = strct->window_height / strct->map_height;
     return (0);
 }
 

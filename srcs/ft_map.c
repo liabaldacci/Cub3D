@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 19:47:10 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/30 20:50:31 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/03 20:07:37 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,13 +88,13 @@ int     ft_map(char *str, t_vars *strct, int line_nbr) {
         if (ft_strchr(" \t\n\v\f\r", str[i]))
             temp[i] = 'X';
         else if (ft_strchr("NSWE", str[i])){
-            if (strct->player.playerX != 0 || strct->player.playerY != 0){
+            if (strct->player.x != 0 || strct->player.y != 0){
                 ft_putendl_fd("Player position is invalid.", 1);
                 free(temp);
                 return (-1);
             }
-            strct->player.playerX = ((i * strct->tile_X) + (strct->tile_X / 2)) * strct->minimap_scale;
-            strct->player.playerY = ((line_nbr * strct ->tile_Y) + (strct ->tile_Y / 2)) * strct->minimap_scale;
+            strct->player.x = ((i * strct->tile_X) + (strct->tile_X / 2)) * strct->minimap_scale;
+            strct->player.y = ((line_nbr * strct ->tile_Y) + (strct ->tile_Y / 2)) * strct->minimap_scale;
             strct->player.direction = str[i];
             temp[i] = '0';
         }

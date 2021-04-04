@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 20:03:34 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/01 16:08:35 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/03 20:17:30 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 void ft_init_struct(t_vars *strct)
 {
     strct->window_title = "Hello world!";
-    strct->player.player_width = 5;
-    strct->player.player_height = 5;
-    strct->player.playerX = 0;
-    strct->player.playerY = 0;
+    strct->player.width = 5;
+    strct->player.height = 5;
+    strct->player.x = 0;
+    strct->player.y = 0;
     strct->player.walk_speed = 10;
     strct->map_height = 0;
     strct->map_width = 0;
@@ -32,6 +32,9 @@ void ft_init_struct(t_vars *strct)
     strct->player.walk_direction = 0;
     strct->player.turn_direction = 0;
     strct->player.turn_speed = 4 * (PI / 180);
+    strct->rays.num_of = 0;
+    strct->rays.size_of = 0;
+    strct->player.fov_angle = 60 * (PI / 180);
 }
 
 int    ft_init_window(t_vars *strct) {
@@ -53,3 +56,16 @@ int    ft_init_window(t_vars *strct) {
     return (0);
 }
 
+void    ft_init_structs(t_vars *strct)
+{
+    strct->rays.num_of = strct->window_width;
+    strct->rays.size_of = strct->window_width / strct->player.fov_angle;
+}
+
+void    ft_scale(t_vars *strct)
+{
+    strct->player.scaled_x = strct->player.x * strct->minimap_scale;
+    strct->player.scaled_y = strct->player.y * strct->minimap_scale;
+    strct->player.scaled_width = strct->player.width * strct->minimap_scale;
+    strct->player.scaled_height = strct->player.height * strct->minimap_scale;
+}

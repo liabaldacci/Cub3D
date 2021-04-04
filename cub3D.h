@@ -6,15 +6,16 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 21:24:09 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/01 16:05:37 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/03 22:59:16 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 # define PI 3.141592653589793238462643383279502884197169399375105820974944
+# define TWO_PI PI*2
 
-# include "./mlx/mlx.h"
+# include "./minilibx-linux/mlx.h"
 # include "./GNL/get_next_line.h"
 # include <stdio.h>
 # include <stdlib.h>
@@ -25,18 +26,31 @@
 typedef struct  s_player
 {
     
-    int         playerX;
-    int         playerY;
+    int         x;
+    int         y;
     char        direction;
-    int         player_width;
-    int         player_height;
+    int         width;
+    int         height;
     int         turn_direction; //-1 for left and +1 for right
     int         walk_direction; //-1 for going backwards and +1 for going forward
     double      rotation_angle;
     double      walk_speed;
     double      turn_speed;
+    double      fov_angle;
+    double      scaled_x;
+    double      scaled_y;
+    double      scaled_width;
+    double      scaled_height;
     
 }               t_player;
+
+typedef struct  s_rays
+{
+    
+    double         num_of;
+    double         size_of;
+    
+}               t_rays;
 
 typedef struct  s_vars
 {
@@ -49,7 +63,7 @@ typedef struct  s_vars
     int         endian;
     int         window_height;
     int         window_width;
-    char        *window_title;
+    char       *window_title;
     int         R_ceiling;
     int         G_ceiling;
     int         B_ceiling;
@@ -73,6 +87,7 @@ typedef struct  s_vars
     int         tile_Y;
     double      minimap_scale;
     t_player    player;
+    t_rays      rays;
     
 }               t_vars;
 
@@ -114,6 +129,9 @@ int     ft_render_map(t_vars *strct);
 int     ft_render_player(t_vars *strct);
 void    drawLine(t_vars *strct, int x1, int y1, int x2, int y2);
 int     ft_has_wall_at(t_vars *strct, double x, double y);
+void    cast_all_rays(t_vars *strct);
+void        ft_init_structs(t_vars *strct);
+double       ft_normalize_angle(double angle);
 
 
 

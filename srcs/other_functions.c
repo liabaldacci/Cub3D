@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mlx_pixel_put.c                                 :+:      :+:    :+:   */
+/*   other_functions.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/01 21:50:18 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/03 22:47:06 by gadoglio         ###   ########.fr       */
+/*   Created: 2021/04/03 20:43:11 by gadoglio          #+#    #+#             */
+/*   Updated: 2021/04/03 21:44:36 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-void        ft_mlx_pixel_put(t_vars *strct, int x, int y, int color)
-{
-    char    *dst;
+double       ft_normalize_angle(double angle){
+    double  remainder;
 
-    dst = strct->addr + (y * strct->line_length + x * ((strct->bits_per_pixel )/ 8));
-    *(unsigned int*)dst = color;
+    if (angle > TWO_PI || angle < 0){
+        remainder = fmod(angle, TWO_PI);
+        angle = (angle < 0) ? (TWO_PI + remainder) : remainder;
+    }
+    return (angle);    
 }

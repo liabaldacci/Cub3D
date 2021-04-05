@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 19:51:29 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/03 22:41:14 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/04 22:03:56 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ void    ft_cast_ray(t_vars *strct, double ray_angle) {
     if (ray_y <= strct->tile_Y)
         ray_y = strct->tile_Y + 1;
     printf("rotation angle in cast_ray: %f\n\n", strct->player.rotation_angle);
-    drawLine(strct, strct->player.scaled_x + (strct->player.scaled_width / 2),
+    ft_draw_line(strct, strct->player.scaled_x + (strct->player.scaled_width / 2),
         strct->player.scaled_y + (strct->player.scaled_height / 2),
         (strct->player.scaled_x + cos(strct->player.rotation_angle) * strct->tile_X * strct->minimap_scale),
         (strct->player.scaled_y + sin(strct->player.rotation_angle) * strct->tile_X * strct->minimap_scale));
-    drawLine(strct, strct->player.scaled_x + (strct->player.scaled_width / 2),
+    ft_draw_line(strct, strct->player.scaled_x + (strct->player.scaled_width / 2),
         strct->player.scaled_y + (strct->player.scaled_height / 2),
         ray_x,
         ray_y);

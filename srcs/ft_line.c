@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/02 19:24:30 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/04 22:20:27 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/05 20:13:35 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,34 @@ void    ft_large_slope(t_vars *strct, int slope_sign, int x1, int y1, int x2, in
     int color;
 
     dx = x2 - x1;
-    dy = y2 - y1;
+    dy = abs(y2 - y1);
     color = 0x00FF0000;
 
     P = (2 * dx) - dy;
-    while(x1 <= x2)
-    {
-        ft_mlx_pixel_put(strct, x1, y1, color);
-        y1 = (slope_sign == -1) ? y1 - 1 : y1 + 1; //se slope for negativo, y decrementa, se for positivo y incrementa
-        if(P < 0)
-            P += 2 * dy;
-        else{
-            P += (2 * dy) -(2 * dx);
-            x1++; 
+    if (y1 < y2){
+        while(y1 <= y2)
+        {
+            ft_mlx_pixel_put(strct, x1, y1, color);
+            y1++;
+            if(P < 0)
+                P += 2 * dx;
+            else{
+                P += (2 * dx) - (2 * dy);
+                x1++; 
+            }
+        }
+    }
+    else {
+        while(y2 <= y1)
+        {
+            ft_mlx_pixel_put(strct, x1, y1, color);
+            y1--;
+            if(P < 0)
+                P += 2 * dx;
+            else{
+                P += (2 * dx) - (2 * dy);
+                x1++; 
+            }
         }
     }
 }
@@ -45,10 +60,10 @@ void    ft_small_slope(t_vars *strct, int slope_sign, int x1, int y1, int x2, in
     int color;
 
     dx = x2 - x1;
-    dy = y2 - y1;
+    dy = abs(y2 - y1);
     color = 0x00FF0000;
     
-    P = (2 * dx) - dy;
+    P = (2 * dy) - dx;
     while(x1 <= x2)
     {
         ft_mlx_pixel_put(strct, x1, y1, color);
@@ -56,7 +71,7 @@ void    ft_small_slope(t_vars *strct, int slope_sign, int x1, int y1, int x2, in
         if(P < 0)
             P += 2 * dy;
         else{
-            P += (2 * dy) -(2 * dx);
+            P += (2 * dy) - (2 * dx);
             y1 = (slope_sign == -1) ? y1 - 1 : y1 + 1; //se slope for negativo, y decrementa, se for positivo y incrementa
         }
     }

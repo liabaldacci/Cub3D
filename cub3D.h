@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 21:24:09 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/04 22:20:14 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/05 21:47:20 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,18 @@ typedef struct  s_player
 typedef struct  s_rays
 {
     
-    double         num_of;
-    double         size_of;
+    double          num_of;
+    double          size_of;
+    int             is_ray_facing_down;
+    int             is_ray_facing_up;
+    int             is_ray_facing_right;
+    int             is_ray_facing_left;
+    double          distance;
+    double          wall_hit_x;
+    double          wall_hit_y;
+    double          wall_hit_content;
+    double          was_hit_vertical;
+    double          ray_angle;
     
 }               t_rays;
 

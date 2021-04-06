@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 20:03:34 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/03 20:17:30 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/05 21:45:17 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void ft_init_struct(t_vars *strct)
 {
+    strct->rays = (t_rays){0};
+    strct->player = (t_player){0};
     strct->window_title = "Hello world!";
     strct->player.width = 5;
     strct->player.height = 5;
-    strct->player.x = 0;
-    strct->player.y = 0;
     strct->player.walk_speed = 10;
     strct->map_height = 0;
     strct->map_width = 0;
@@ -29,12 +29,9 @@ void ft_init_struct(t_vars *strct)
     strct->tile_X = 0;
     strct->tile_Y = 0;
     strct->minimap_scale = 1.0;
-    strct->player.walk_direction = 0;
-    strct->player.turn_direction = 0;
     strct->player.turn_speed = 4 * (PI / 180);
-    strct->rays.num_of = 0;
-    strct->rays.size_of = 0;
     strct->player.fov_angle = 60 * (PI / 180);
+    
 }
 
 int    ft_init_window(t_vars *strct) {

@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 21:46:50 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/03 20:32:52 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/07 19:50:57 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ int     ft_has_wall_at(t_vars *strct, double x, double y){
         || y < 0 || y + strct->player.height > strct->window_height) {
             return (1);
         }
-    i = floor((x + strct->player.width) / strct->tile_X);
-    j = floor((y + strct->player.height) / strct->tile_Y);
+    i = floor(x / strct->tile_X);
+    j = floor(y / strct->tile_Y);
     // printf("%i\n", i);
     // printf("%i\n", j);
     // printf("%c\n\n", strct->map[j][i]);

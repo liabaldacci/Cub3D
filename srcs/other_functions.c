@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 20:43:11 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/03 21:44:36 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/07 22:14:55 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,12 @@ double       ft_normalize_angle(double angle){
         angle = (angle < 0) ? (TWO_PI + remainder) : remainder;
     }
     return (angle);    
+}
+
+double      ft_distance_between_points(double x1, double y1, double x2, double y2)
+{
+    double  distance;
+
+    distance = sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+    return (distance);    
 }

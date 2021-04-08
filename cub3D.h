@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 21:24:09 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/05 21:47:20 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/07 22:50:25 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,22 @@ typedef struct  s_rays
     
     double          num_of;
     double          size_of;
-    int             is_ray_facing_down;
-    int             is_ray_facing_up;
-    int             is_ray_facing_right;
-    int             is_ray_facing_left;
-    double          distance;
+    double          distance; //distance between player and wall hit
     double          wall_hit_x;
     double          wall_hit_y;
     double          wall_hit_content;
     double          was_hit_vertical;
     double          ray_angle;
+    int             is_facing_down;
+    int             is_facing_up;
+    int             is_facing_left;
+    int             is_facing_right;
+    double          horz_hit_distance;
+    double          vert_hit_distance;
+    double          horz_wall_hit_x;
+    double          horz_wall_hit_y;
+    double          vert_wall_hit_x;
+    double          vert_wall_hit_y;
     
 }               t_rays;
 
@@ -142,6 +148,7 @@ int     ft_has_wall_at(t_vars *strct, double x, double y);
 void    cast_all_rays(t_vars *strct);
 void        ft_init_structs(t_vars *strct);
 double       ft_normalize_angle(double angle);
+double      ft_distance_between_points(double x1, double y1, double x2, double y2);
 
 
 

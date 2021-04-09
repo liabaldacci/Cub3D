@@ -6,7 +6,11 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 19:51:29 by gadoglio          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2021/04/08 22:41:37 by gadoglio         ###   ########.fr       */
+=======
+/*   Updated: 2021/04/08 22:23:01 by gadoglio         ###   ########.fr       */
+>>>>>>> 753f34676f755732054298b5a5dc5bef483a63cf
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,6 +173,34 @@ void        ft_cast_ray(t_vars *strct, double ray_angle)
     strct->rays.distance = (strct->rays.horz_hit_distance < strct->rays.vert_hit_distance)
         ? strct->rays.horz_hit_distance : strct->rays.vert_hit_distance;
     strct->rays.was_hit_vertical = (strct->rays.vert_hit_distance < strct->rays.horz_hit_distance);
+<<<<<<< HEAD
+=======
+    // printf("ray angle 2: %f\n", ray_angle);
+    // printf("cosine angle: %f\n", cos(ray_angle));
+    // printf("scaled_x: %f\n", strct->player.scaled_x);
+    // printf("sine angle: %f\n", sin(ray_angle));
+    // printf("scaled_y: %f\n", strct->player.scaled_y);
+    // ray_x = (strct->player.scaled_x + cos(ray_angle) * 50 * strct->minimap_scale);
+    // ray_y = (strct->player.scaled_y + sin(ray_angle) * 50 * strct->minimap_scale);
+    // test = strct->window_width - strct->tile_X;
+    // if (ray_x >= test)
+    //     ray_x = strct->window_width - strct->tile_X - 1;
+    // if (ray_x <= strct->tile_X)
+    //     ray_x = strct->tile_X + 1;
+    // if (ray_y >= strct->window_height - strct->tile_Y)
+    //     ray_y = strct->window_height - strct->tile_Y - 1;
+    // if (ray_y <= strct->tile_Y)
+    //     ray_y = strct->tile_Y + 1;
+    // printf("rotation angle in cast_ray: %f\n\n", strct->player.rotation_angle);
+    // ft_draw_line(strct, strct->player.scaled_x + (strct->player.scaled_width / 2),
+    //     strct->player.scaled_y + (strct->player.scaled_height / 2),
+    //     (strct->player.scaled_x + cos(strct->player.rotation_angle) * 50 * strct->minimap_scale),
+    //     (strct->player.scaled_y + sin(strct->player.rotation_angle) * 50 * strct->minimap_scale));
+    ft_draw_line(strct, ((strct->player.x + (strct->player.width / 2)) * strct->minimap_scale),
+        ((strct->player.y + (strct->player.height / 2)) * strct->minimap_scale),
+        (strct->rays.wall_hit_x * strct->minimap_scale),
+        (strct->rays.wall_hit_y * strct->minimap_scale));
+>>>>>>> 753f34676f755732054298b5a5dc5bef483a63cf
 }
 
 void        cast_all_rays(t_vars *strct)

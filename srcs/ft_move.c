@@ -6,39 +6,38 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 21:46:50 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/07 19:50:57 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/08 19:22:27 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-int ft_move(t_vars *strct) {
-    double new_position;
-    double new_x;
-    double new_y;
+int         ft_move(t_vars *strct)
+{
+    double  new_position;
+    double  new_x;
+    double  new_y;
     double  move_step;
 
     strct->player.rotation_angle += strct->player.turn_direction * strct->player.turn_speed;
     move_step = strct->player.walk_direction * strct->player.walk_speed;
     new_x = strct->player.x + cos(strct->player.rotation_angle) * move_step;
     new_y = strct->player.y + sin(strct->player.rotation_angle) * move_step;
-    // printf("current x: %i\nnext x:%f\n",strct->player.x, new_x);
-    // printf("current y: %i\nnext y:%f\n\n",strct->player.y, new_y);
-
     //only set new player position if it is not coliding with map wall
-    if (ft_has_wall_at(strct, new_x, new_y) == 0) {
+    if (ft_has_wall_at(strct, new_x, new_y) == 0)
+    {
         strct->player.x = new_x;
         strct->player.y = new_y;
     }
-    ft_scale(strct);
     return (0);
 }
     
 
-int     ft_has_wall_at(t_vars *strct, double x, double y){
-    int i;
-    int j;
-    int value;
+int         ft_has_wall_at(t_vars *strct, double x, double y)
+{
+    int     i;
+    int     j;
+    int     value;
 
     if (x < 0 || x + strct->player.width > strct->window_width
         || y < 0 || y + strct->player.height > strct->window_height) {
@@ -46,9 +45,6 @@ int     ft_has_wall_at(t_vars *strct, double x, double y){
         }
     i = floor(x / strct->tile_X);
     j = floor(y / strct->tile_Y);
-    // printf("%i\n", i);
-    // printf("%i\n", j);
-    // printf("%c\n\n", strct->map[j][i]);
     value = strct->map[j][i] != '0';
     return (value);
 }

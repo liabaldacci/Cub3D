@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 19:11:01 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/03 21:08:07 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/08 22:37:27 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@ int         ft_render_map(t_vars *strct){
 
     i = 0;
     j = 0;
-    while (i < strct->map_height){
-        while (j < strct->map_width){
-            tile_x_position = j * strct->tile_X * strct->minimap_scale;
-            tile_y_position = i * strct->tile_Y * strct->minimap_scale;
+    while (i < strct->map_height)
+    {
+        while (j < strct->map_width)
+        {
+            tile_x_position = j * strct->tile_X;
+            tile_y_position = i * strct->tile_Y;
             if (strct->map[i][j] == '1' || strct->map[i][j] == 'X')
                 tile_color = 0x00000000;
             else if (strct->map[i][j] == '2')
@@ -43,13 +45,22 @@ int         ft_render_map(t_vars *strct){
     return (0);
 }
 
-int     ft_render_player(t_vars *strct){
-    int color;
+int         ft_render_player(t_vars *strct)
+{
+    int     color;
 
     color = 0x0000FF;
-    ft_square(strct, strct->player.scaled_x,
-            strct->player.scaled_y,
-            strct->player.scaled_width,
-            strct->player.scaled_height, color);
+    ft_square(strct, (strct->player.x * strct->minimap_scale),
+            (strct->player.y * strct->minimap_scale),
+            (strct->player.width * strct->minimap_scale),
+            (strct->player.height * strct->minimap_scale), color);
     return (0);
+}
+
+void        ft_render_2d_rays(t_vars *strct)
+{
+    ft_draw_line(strct, ((strct->player.x + (strct->player.width / 2)) * strct->minimap_scale),
+        ((strct->player.y + (strct->player.height / 2)) * strct->minimap_scale),
+        (strct->rays.wall_hit_x * strct->minimap_scale),
+        (strct->rays.wall_hit_y * strct->minimap_scale));
 }

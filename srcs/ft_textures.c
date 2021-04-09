@@ -6,16 +6,17 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 21:47:45 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/23 22:39:31 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/08 13:46:45 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-int     ft_split_path(char *str, char **path){
-    int len_path;
-    int i;
-    int j;
+int         ft_split_path(char *str, char **path)
+{
+    int     len_path;
+    int     i;
+    int     j;
 
     i = 2;
     len_path = 0;
@@ -28,13 +29,14 @@ int     ft_split_path(char *str, char **path){
     return (0);
 }
 
-int ft_path_check(char *path)
+int         ft_path_check(char *path)
 {
    //CHECK IF PATH OPENS
     int     fd;
 
     fd = open(path, O_RDONLY);
-    if (fd < 0) {
+    if (fd < 0)
+    {
         ft_putendl_fd("Invalid path to texture!", 1);
         return (-1);
     }
@@ -42,11 +44,13 @@ int ft_path_check(char *path)
     return (0);
 }
 
-int         ft_textures(char *str, t_vars *strct) {
+int         ft_textures(char *str, t_vars *strct)
+{
     char    *path;
 
     ft_split_path(str, &path);
-    if (ft_path_check(path) < 0){
+    if (ft_path_check(path) < 0)
+    {
         free(path);
         return (-1);
     }
@@ -56,7 +60,8 @@ int         ft_textures(char *str, t_vars *strct) {
         strct->WE_texture = ft_strdup(path);
     else if (str[0] == 'E')
         strct->EA_texture = ft_strdup(path);
-    else {
+    else
+    {
         if (str[1] == 'O')
             strct->SO_texture = ft_strdup(path);
         else

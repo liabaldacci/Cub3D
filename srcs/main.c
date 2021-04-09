@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 19:28:38 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/03 20:15:20 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/08 22:41:11 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,20 @@
 
 #include "../cub3D.h"
 
-void ft_render(t_vars *strct) {
+void ft_render(t_vars *strct)
+{
     ft_black_screen(strct);
+    cast_3d_rays(strct);
     ft_render_map(strct);
     ft_render_player(strct);
     cast_all_rays(strct);
     mlx_put_image_to_window(strct->mlx, strct->mlx_win, strct->img, 0, 0);
-    //todo render rays
-    //todo render player.player
 }
 
 // ////////////////////////////////////////////////////////////////////////////////
 
-int ft_update(t_vars *strct) {
-    // strct->player.turn_direction = -1;
-    // strct->player.walk_direction = 1;
+int ft_update(t_vars *strct)
+{
     ft_move(strct);
     return (0);
 }
@@ -81,40 +80,15 @@ int         main(int argc, char **argv)
     
     return (0);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     
-    mlx_hook(strct.mlx_win, 2, 1L<<0, key_press, &strct);
-    mlx_hook(strct.mlx_win, 3, 1L<<1, key_release, &strct);
-    mlx_hook(strct.mlx_win, 33, 1L<<17, close_program, &strct);
-
-    //no idea what this does. I think it keeps the window open.
-    mlx_loop_hook(strct.mlx, ft_update, &strct);
-    mlx_loop(strct.mlx);
-
-    free(strct.mlx);
-    free(strct.NO_texture);
-    free(strct.SO_texture);
-    free(strct.WE_texture);
-    free(strct.EA_texture);
-    free(strct.Sprite_texture);
-    mlx_destroy_image(strct.mlx, strct.img);
-    mlx_destroy_window(strct.mlx, strct.mlx_win);
-    mlx_destroy_display(strct.mlx);
+    // free(strct.mlx);
+    // free(strct.NO_texture);
+    // free(strct.SO_texture);
+    // free(strct.WE_texture);
+    // free(strct.EA_texture);
+    // free(strct.Sprite_texture);
+    // mlx_destroy_image(strct.mlx, strct.img);
+    // mlx_destroy_window(strct.mlx, strct.mlx_win);
+    // mlx_destroy_display(strct.mlx);
     
-    return (0);
 }

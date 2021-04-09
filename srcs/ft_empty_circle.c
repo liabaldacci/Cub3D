@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/01 21:59:20 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/15 11:50:50 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/08 12:56:43 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void    ft_empty_circle(t_vars *strct, int x, int y, int radius, int color)
     angle = 0;
     x_temp = x;
     y_temp = y;
-    
     while (angle < 360)
     {
         x_temp = x + (cos(angle) * radius);

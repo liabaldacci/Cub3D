@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 21:24:09 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/07 22:50:25 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/08 22:40:47 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,6 @@ typedef struct  s_player
     double      walk_speed;
     double      turn_speed;
     double      fov_angle;
-    double      scaled_x;
-    double      scaled_y;
-    double      scaled_width;
-    double      scaled_height;
     
 }               t_player;
 
@@ -65,6 +61,7 @@ typedef struct  s_rays
     double          horz_wall_hit_y;
     double          vert_wall_hit_x;
     double          vert_wall_hit_y;
+    double          column_id;
     
 }               t_rays;
 
@@ -149,6 +146,7 @@ void    cast_all_rays(t_vars *strct);
 void        ft_init_structs(t_vars *strct);
 double       ft_normalize_angle(double angle);
 double      ft_distance_between_points(double x1, double y1, double x2, double y2);
+void        cast_3d_rays(t_vars *strct);
 
 
 

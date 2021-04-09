@@ -6,16 +6,17 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/22 21:04:17 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/28 17:47:20 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/08 13:05:44 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-int     ft_split_numbers(char *str, int i, char **width, char **height){
-    int len_height;
-    int len_width;
-    int j;
+int         ft_split_numbers(char *str, int i, char **width, char **height)
+{
+    int     len_height;
+    int     len_width;
+    int     j;
 
     len_height = 0;
     len_width = 0;
@@ -34,17 +35,20 @@ int     ft_split_numbers(char *str, int i, char **width, char **height){
     return (0);
 }
 
-int     ft_validate_numbers(char *width, char *height){
-    int i;
+int         ft_validate_numbers(char *width, char *height)
+{
+    int     i;
 
     i = 0;
-    while (width[i] != '\0'){
+    while (width[i] != '\0')
+    {
         if (ft_isdigit(width[i]) == 0)
             return (-1);
         i++;
     }
     i = 0;
-    while (height[i] != '\0'){
+    while (height[i] != '\0')
+    {
         if (ft_isdigit(height[i]) == 0)
             return (-1);
         i++;
@@ -52,17 +56,19 @@ int     ft_validate_numbers(char *width, char *height){
     return (0);
 }
 
-int     ft_resolution(char *str, t_vars *strct) {
-    int screen_height;
-    int screen_width;
-    char *width;
-    char *height;
-    int i;
+int         ft_resolution(char *str, t_vars *strct)
+{
+    int     screen_height;
+    int     screen_width;
+    char    *width;
+    char    *height;
+    int     i;
 
     i = 1;
     mlx_get_screen_size(strct->mlx, &screen_width, &screen_height);
     ft_split_numbers(str, i, &width, &height);
-    if (ft_validate_numbers(width, height) == -1){
+    if (ft_validate_numbers(width, height) == -1)
+    {
         free(height);
         free(width);
         return (-1);
@@ -70,7 +76,8 @@ int     ft_resolution(char *str, t_vars *strct) {
     strct->window_width = ft_atoi(width);
     strct->window_height = ft_atoi(height);
     if ((strct->window_width > screen_width)
-        || (strct->window_height > screen_height)){
+        || (strct->window_height > screen_height))
+        {
         ft_putendl_fd("Your window is too big!!!", 1);
         free(height);
         free(width);

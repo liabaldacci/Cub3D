@@ -6,13 +6,14 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/23 20:46:53 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/03/23 21:44:35 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/08 12:56:28 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-int     ft_split_number(char *str,int i, char **number){
+int     ft_split_number(char *str,int i, char **number)
+{
     int len_number;
     int j;
 
@@ -26,11 +27,13 @@ int     ft_split_number(char *str,int i, char **number){
     return (i);
 }
 
-int     ft_validate_number(char *number){
+int     ft_validate_number(char *number)
+{
     int i;
 
     i = 0;
-    while (number[i] != '\0'){
+    while (number[i] != '\0')
+    {
         if (ft_isdigit(number[i]) == 0){
             ft_putendl_fd("One of the colors is not in a valid number format.", 1);
             return (-1);
@@ -58,18 +61,22 @@ int         ft_colors(char *str, t_vars *strct) {
     
     i = 1;
     RGB = 0;
-    while (RGB < 3) {
+    while (RGB < 3)
+    {
         i = ft_split_number(str, i, &number);
-        if (ft_validate_number(number) < 0){
+        if (ft_validate_number(number) < 0)
+        {
             free(number);
             return (-1);
         } //add error message
         nbr = ft_atoi(number);
-        if (ft_color_check(nbr) < 0){
+        if (ft_color_check(nbr) < 0)
+        {
             free(number);
             return (-1);
         }
-        if (str[0] == 'C') {
+        if (str[0] == 'C')
+        {
             if (RGB == 0)
                 strct->R_ceiling = nbr;
             else if (RGB == 1)
@@ -77,7 +84,8 @@ int         ft_colors(char *str, t_vars *strct) {
             else if (RGB == 2)
                 strct->B_ceiling = nbr;
         }
-        else {
+        else
+        {
             if (RGB == 0)
                 strct->R_floor = nbr;
             else if (RGB == 1)

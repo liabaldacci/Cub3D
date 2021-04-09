@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 19:51:29 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/07 22:57:35 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/08 22:23:01 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,10 +193,10 @@ void    ft_cast_ray(t_vars *strct, double ray_angle) {
     //     strct->player.scaled_y + (strct->player.scaled_height / 2),
     //     (strct->player.scaled_x + cos(strct->player.rotation_angle) * 50 * strct->minimap_scale),
     //     (strct->player.scaled_y + sin(strct->player.rotation_angle) * 50 * strct->minimap_scale));
-    ft_draw_line(strct, strct->player.scaled_x + (strct->player.scaled_width / 2),
-        strct->player.scaled_y + (strct->player.scaled_height / 2),
-        strct->rays.wall_hit_x,
-        strct->rays.wall_hit_y);
+    ft_draw_line(strct, ((strct->player.x + (strct->player.width / 2)) * strct->minimap_scale),
+        ((strct->player.y + (strct->player.height / 2)) * strct->minimap_scale),
+        (strct->rays.wall_hit_x * strct->minimap_scale),
+        (strct->rays.wall_hit_y * strct->minimap_scale));
 }
 
 void cast_all_rays(t_vars *strct) {

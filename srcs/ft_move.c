@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 21:46:50 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/07 19:50:57 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/08 22:16:03 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int ft_move(t_vars *strct) {
         strct->player.x = new_x;
         strct->player.y = new_y;
     }
-    ft_scale(strct);
     return (0);
 }
     

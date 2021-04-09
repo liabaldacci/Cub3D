@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 21:24:09 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/07 22:50:25 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/08 22:19:04 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,6 @@ typedef struct  s_player
     double      walk_speed;
     double      turn_speed;
     double      fov_angle;
-    double      scaled_x;
-    double      scaled_y;
-    double      scaled_width;
-    double      scaled_height;
     
 }               t_player;
 

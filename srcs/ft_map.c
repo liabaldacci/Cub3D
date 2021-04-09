@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 19:47:10 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/03 20:07:37 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/08 22:22:09 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,8 @@ int     ft_map(char *str, t_vars *strct, int line_nbr) {
                 free(temp);
                 return (-1);
             }
-            strct->player.x = ((i * strct->tile_X) + (strct->tile_X / 2)) * strct->minimap_scale;
-            strct->player.y = ((line_nbr * strct ->tile_Y) + (strct ->tile_Y / 2)) * strct->minimap_scale;
+            strct->player.x = ((i * strct->tile_X) + (strct->tile_X / 2));
+            strct->player.y = ((line_nbr * strct ->tile_Y) + (strct ->tile_Y / 2));
             strct->player.direction = str[i];
             temp[i] = '0';
         }

@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 20:03:34 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/05 21:45:17 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/08 22:24:10 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,4 @@ void    ft_init_structs(t_vars *strct)
 {
     strct->rays.num_of = strct->window_width;
     strct->rays.size_of = strct->window_width / strct->player.fov_angle;
-}
-
-void    ft_scale(t_vars *strct)
-{
-    strct->player.scaled_x = strct->player.x * strct->minimap_scale;
-    strct->player.scaled_y = strct->player.y * strct->minimap_scale;
-    strct->player.scaled_width = strct->player.width * strct->minimap_scale;
-    strct->player.scaled_height = strct->player.height * strct->minimap_scale;
 }

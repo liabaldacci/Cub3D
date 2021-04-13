@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 19:28:38 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/08 22:41:11 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/12 21:59:57 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int         main(int argc, char **argv)
         close_program(&strct);
     }
 
-    ft_init_structs(&strct);
+    ft_init_rays(&strct);
     mlx_hook(strct.mlx_win, 2, 1L<<0, key_press, &strct);
     mlx_hook(strct.mlx_win, 3, 1L<<1, key_release, &strct);
     mlx_hook(strct.mlx_win, 33, 1L<<17, close_program, &strct);

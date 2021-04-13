@@ -6,11 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 19:51:29 by gadoglio          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2021/04/08 22:41:37 by gadoglio         ###   ########.fr       */
-=======
-/*   Updated: 2021/04/08 22:23:01 by gadoglio         ###   ########.fr       */
->>>>>>> 753f34676f755732054298b5a5dc5bef483a63cf
+/*   Updated: 2021/04/12 19:59:57 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +26,25 @@ void        ft_render_3d_rays(t_vars *strct)
     wall_strip_height = (strct->tile_Y / strct->rays.distance)
         * distance_proj_plane;
     wall_top_pixel = (strct->window_height / 2) - (wall_strip_height / 2);
-    wall_top_pixel = (wall_top_pixel < 0) ? 0 : wall_top_pixel;
+    wall_top_pixel = (wall_top_pixel <= 0) ? 1 : wall_top_pixel;
     wall_bottom_pixel = (strct->window_height / 2) + (wall_strip_height / 2);
-    wall_bottom_pixel = (wall_bottom_pixel > strct->window_height)
-        ? strct->window_height : wall_bottom_pixel;
+    wall_bottom_pixel = (wall_bottom_pixel >= strct->window_height)
+        ? strct->window_height - 1 : wall_bottom_pixel;
+    strct->color = strct->ceiling_color;
+    ft_draw_line(strct, strct->rays.column_id,
+        0,
+        strct->rays.column_id,
+        wall_top_pixel);
+    strct->color = 0xCBF997;
     ft_draw_line(strct, strct->rays.column_id,
         wall_top_pixel,
         strct->rays.column_id,
         wall_bottom_pixel);
+    strct->color = strct->floor_color;
+    ft_draw_line(strct, strct->rays.column_id,
+        wall_bottom_pixel,
+        strct->rays.column_id,
+        strct->window_height - 1);
 }
 
 void        ft_horizontal_check(t_vars *strct, double ray_angle)
@@ -173,34 +180,6 @@ void        ft_cast_ray(t_vars *strct, double ray_angle)
     strct->rays.distance = (strct->rays.horz_hit_distance < strct->rays.vert_hit_distance)
         ? strct->rays.horz_hit_distance : strct->rays.vert_hit_distance;
     strct->rays.was_hit_vertical = (strct->rays.vert_hit_distance < strct->rays.horz_hit_distance);
-<<<<<<< HEAD
-=======
-    // printf("ray angle 2: %f\n", ray_angle);
-    // printf("cosine angle: %f\n", cos(ray_angle));
-    // printf("scaled_x: %f\n", strct->player.scaled_x);
-    // printf("sine angle: %f\n", sin(ray_angle));
-    // printf("scaled_y: %f\n", strct->player.scaled_y);
-    // ray_x = (strct->player.scaled_x + cos(ray_angle) * 50 * strct->minimap_scale);
-    // ray_y = (strct->player.scaled_y + sin(ray_angle) * 50 * strct->minimap_scale);
-    // test = strct->window_width - strct->tile_X;
-    // if (ray_x >= test)
-    //     ray_x = strct->window_width - strct->tile_X - 1;
-    // if (ray_x <= strct->tile_X)
-    //     ray_x = strct->tile_X + 1;
-    // if (ray_y >= strct->window_height - strct->tile_Y)
-    //     ray_y = strct->window_height - strct->tile_Y - 1;
-    // if (ray_y <= strct->tile_Y)
-    //     ray_y = strct->tile_Y + 1;
-    // printf("rotation angle in cast_ray: %f\n\n", strct->player.rotation_angle);
-    // ft_draw_line(strct, strct->player.scaled_x + (strct->player.scaled_width / 2),
-    //     strct->player.scaled_y + (strct->player.scaled_height / 2),
-    //     (strct->player.scaled_x + cos(strct->player.rotation_angle) * 50 * strct->minimap_scale),
-    //     (strct->player.scaled_y + sin(strct->player.rotation_angle) * 50 * strct->minimap_scale));
-    ft_draw_line(strct, ((strct->player.x + (strct->player.width / 2)) * strct->minimap_scale),
-        ((strct->player.y + (strct->player.height / 2)) * strct->minimap_scale),
-        (strct->rays.wall_hit_x * strct->minimap_scale),
-        (strct->rays.wall_hit_y * strct->minimap_scale));
->>>>>>> 753f34676f755732054298b5a5dc5bef483a63cf
 }
 
 void        cast_all_rays(t_vars *strct)
@@ -218,6 +197,7 @@ void        cast_all_rays(t_vars *strct)
         strct->rays.is_facing_left = (strct->rays.is_facing_right == 0) ? 1 : 0;
         ft_cast_ray(strct, ray_angle);
         ray_angle += strct->player.fov_angle / strct->rays.num_of;
+        strct->color = 0xCBC3E3;
         ft_draw_line(strct, ((strct->player.x + (strct->player.width / 2)) * strct->minimap_scale),
             ((strct->player.y + (strct->player.height / 2)) * strct->minimap_scale),
             (strct->rays.wall_hit_x * strct->minimap_scale),
@@ -239,6 +219,8 @@ void        cast_3d_rays(t_vars *strct)
         strct->rays.is_facing_up = (strct->rays.is_facing_down == 0) ? 1 : 0;
         strct->rays.is_facing_right = (ray_angle < (PI / 2)) || (ray_angle > (1.5 * PI));
         strct->rays.is_facing_left = (strct->rays.is_facing_right == 0) ? 1 : 0;
+        // printf("ray angle: %f.\n", ray_angle);
+        // printf("column id: %f.\n", strct->rays.column_id);
         ft_cast_ray(strct, ray_angle);
         ft_render_3d_rays(strct);
         ray_angle += strct->player.fov_angle / strct->rays.num_of;

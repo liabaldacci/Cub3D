@@ -6,11 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 20:03:34 by gadoglio          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2021/04/08 22:35:26 by gadoglio         ###   ########.fr       */
-=======
-/*   Updated: 2021/04/08 22:24:10 by gadoglio         ###   ########.fr       */
->>>>>>> 753f34676f755732054298b5a5dc5bef483a63cf
+/*   Updated: 2021/04/12 21:59:57 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +22,8 @@ void ft_init_struct(t_vars *strct)
     strct->player.walk_speed = 10;
     strct->map_height = 0;
     strct->map_width = 0;
+    strct->ceiling_color = 0x87CEEB;
+    strct->floor_color = 0x91672C;
     strct->left = 0;
     strct->right = 0;
     strct->up = 0;
@@ -56,7 +54,7 @@ int    ft_init_window(t_vars *strct) {
     return (0);
 }
 
-void    ft_init_structs(t_vars *strct)
+void    ft_init_rays(t_vars *strct)
 {
     strct->rays.num_of = strct->window_width;
     strct->rays.size_of = strct->window_width / strct->player.fov_angle;

@@ -6,11 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 21:24:09 by gadoglio          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2021/04/08 22:40:47 by gadoglio         ###   ########.fr       */
-=======
-/*   Updated: 2021/04/08 22:19:04 by gadoglio         ###   ########.fr       */
->>>>>>> 753f34676f755732054298b5a5dc5bef483a63cf
+/*   Updated: 2021/04/12 21:59:57 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +83,8 @@ typedef struct  s_vars
     int         R_floor;
     int         G_floor;
     int         B_floor;
+    int         ceiling_color;
+    int         floor_color;
     char        *NO_texture;
     char        *SO_texture;
     char        *WE_texture;
@@ -103,6 +101,7 @@ typedef struct  s_vars
     int         tile_X;
     int         tile_Y;
     double      minimap_scale;
+    int         color;
     t_player    player;
     t_rays      rays;
     
@@ -147,7 +146,7 @@ int     ft_render_player(t_vars *strct);
 int    ft_draw_line(t_vars *strct, int x1, int y1, int x2, int y2);
 int     ft_has_wall_at(t_vars *strct, double x, double y);
 void    cast_all_rays(t_vars *strct);
-void        ft_init_structs(t_vars *strct);
+void        ft_init_rays(t_vars *strct);
 double       ft_normalize_angle(double angle);
 double      ft_distance_between_points(double x1, double y1, double x2, double y2);
 void        cast_3d_rays(t_vars *strct);

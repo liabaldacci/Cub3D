@@ -6,11 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 19:11:01 by gadoglio          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2021/04/08 22:37:27 by gadoglio         ###   ########.fr       */
-=======
-/*   Updated: 2021/04/08 22:21:23 by gadoglio         ###   ########.fr       */
->>>>>>> 753f34676f755732054298b5a5dc5bef483a63cf
+/*   Updated: 2021/04/12 19:09:36 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +21,10 @@ int         ft_render_map(t_vars *strct){
 
     i = 0;
     j = 0;
-<<<<<<< HEAD
     while (i < strct->map_height)
     {
         while (j < strct->map_width)
         {
-=======
-    while (i < strct->map_height){
-        while (j < strct->map_width){
->>>>>>> 753f34676f755732054298b5a5dc5bef483a63cf
             tile_x_position = j * strct->tile_X;
             tile_y_position = i * strct->tile_Y;
             if (strct->map[i][j] == '1' || strct->map[i][j] == 'X')

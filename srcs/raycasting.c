@@ -6,13 +6,13 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 19:51:29 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/12 19:59:57 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/12 22:28:05 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-void        ft_render_3d_rays(t_vars *strct)
+void        ft_render_3d_rays(t_vars *strct, double ray_angle)
 {
     double  wall_strip_height;
     double  distance_proj_plane;
@@ -23,7 +23,8 @@ void        ft_render_3d_rays(t_vars *strct)
     distance_proj_plane = (strct->window_width / 2)
         / tan(strct->player.fov_angle / 2);
     //projected wall height
-    wall_strip_height = (strct->tile_Y / strct->rays.distance)
+    wall_strip_height = (strct->tile_Y / (strct->rays.distance
+        * cos(ray_angle - strct->player.rotation_angle)))
         * distance_proj_plane;
     wall_top_pixel = (strct->window_height / 2) - (wall_strip_height / 2);
     wall_top_pixel = (wall_top_pixel <= 0) ? 1 : wall_top_pixel;
@@ -222,7 +223,7 @@ void        cast_3d_rays(t_vars *strct)
         // printf("ray angle: %f.\n", ray_angle);
         // printf("column id: %f.\n", strct->rays.column_id);
         ft_cast_ray(strct, ray_angle);
-        ft_render_3d_rays(strct);
+        ft_render_3d_rays(strct, ray_angle);
         ray_angle += strct->player.fov_angle / strct->rays.num_of;
         strct->rays.column_id++;
     }

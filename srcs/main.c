@@ -6,11 +6,9 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 19:28:38 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/12 21:59:57 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/14 20:57:52 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-//TODO: continuar tutorial pikuma. Melhorar player movement.
 
 #include "../cub3D.h"
 
@@ -45,7 +43,9 @@ int ft_game(t_vars *strct) {
 int         main(int argc, char **argv)
 {
     t_vars  strct;
+    int     i;
     
+    i = -1;
     strct.mlx = mlx_init();
     //initializes struct containing information regarding mlx and the window size
     ft_init_struct(&strct);
@@ -54,6 +54,8 @@ int         main(int argc, char **argv)
         close_program(&strct);
         return(-1);
     }
+    while (++i < 5)
+        ft_load_textures(&strct, i);
     if (ft_init_window(&strct) == -1){
         printf("Error initializing window.");
         close_program(&strct);
@@ -67,28 +69,6 @@ int         main(int argc, char **argv)
     //no idea what this does. I think it keeps the window open.
     mlx_loop_hook(strct.mlx, ft_game, &strct);
     mlx_loop(strct.mlx);
-
-    free(strct.mlx);
-    free(strct.NO_texture);
-    free(strct.SO_texture);
-    free(strct.WE_texture);
-    free(strct.EA_texture);
-    free(strct.Sprite_texture);
-    mlx_destroy_image(strct.mlx, strct.img);
-    mlx_destroy_window(strct.mlx, strct.mlx_win);
-    mlx_destroy_display(strct.mlx);
     
-    return (0);
-
-    
-    // free(strct.mlx);
-    // free(strct.NO_texture);
-    // free(strct.SO_texture);
-    // free(strct.WE_texture);
-    // free(strct.EA_texture);
-    // free(strct.Sprite_texture);
-    // mlx_destroy_image(strct.mlx, strct.img);
-    // mlx_destroy_window(strct.mlx, strct.mlx_win);
-    // mlx_destroy_display(strct.mlx);
-    
+    return (0);    
 }

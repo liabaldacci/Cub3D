@@ -6,11 +6,35 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 19:51:29 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/12 22:28:05 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/14 19:43:51 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
+
+int         ft_which_texture(t_vars *strct, double ray_angle)
+{
+    int     i;
+    if (strct->rays.is_facing_up)
+    {
+        if (strct->rays.was_hit_vertical == 1)
+        {
+            i = (strct->rays.is_facing_right) ? 2 : 3;
+        }
+        else
+            i = 0;
+    }
+    else
+    {
+        if (strct->rays.was_hit_vertical == 1)
+        {
+            i = (strct->rays.is_facing_right) ? 2 : 3;
+        }
+        else
+            i = 1;
+    }
+    return (i);
+}
 
 void        ft_render_3d_rays(t_vars *strct, double ray_angle)
 {
@@ -18,6 +42,7 @@ void        ft_render_3d_rays(t_vars *strct, double ray_angle)
     double  distance_proj_plane;
     int     wall_top_pixel;
     int     wall_bottom_pixel;
+    int     i;
     
     //calculate the distance to the projection plane
     distance_proj_plane = (strct->window_width / 2)
@@ -31,16 +56,18 @@ void        ft_render_3d_rays(t_vars *strct, double ray_angle)
     wall_bottom_pixel = (strct->window_height / 2) + (wall_strip_height / 2);
     wall_bottom_pixel = (wall_bottom_pixel >= strct->window_height)
         ? strct->window_height - 1 : wall_bottom_pixel;
+    i = ft_which_texture(strct, ray_angle);
     strct->color = strct->ceiling_color;
     ft_draw_line(strct, strct->rays.column_id,
         0,
         strct->rays.column_id,
         wall_top_pixel);
-    strct->color = 0xCBF997;
-    ft_draw_line(strct, strct->rays.column_id,
-        wall_top_pixel,
-        strct->rays.column_id,
-        wall_bottom_pixel);
+    // strct->color = 0xCBF997;
+    ft_draw_texture(strct, wall_top_pixel, wall_bottom_pixel, wall_strip_height, i);
+    // ft_draw_line(strct, strct->rays.column_id,
+    //     wall_top_pixel,
+    //     strct->rays.column_id,
+    //     wall_bottom_pixel);
     strct->color = strct->floor_color;
     ft_draw_line(strct, strct->rays.column_id,
         wall_bottom_pixel,
@@ -169,7 +196,7 @@ void        ft_vertical_check(t_vars *strct, double ray_angle)
             strct->rays.vert_wall_hit_x, strct->rays.vert_wall_hit_y) : 2147483646;
 }
 
-void        ft_cast_ray(t_vars *strct, double ray_angle)
+void        ft_distance_calc(t_vars *strct, double ray_angle)
 {
     ft_horizontal_check(strct, ray_angle);
     ft_vertical_check(strct, ray_angle);
@@ -196,7 +223,7 @@ void        cast_all_rays(t_vars *strct)
         strct->rays.is_facing_up = (strct->rays.is_facing_down == 0) ? 1 : 0;
         strct->rays.is_facing_right = (ray_angle < (PI / 2)) || (ray_angle > (1.5 * PI));
         strct->rays.is_facing_left = (strct->rays.is_facing_right == 0) ? 1 : 0;
-        ft_cast_ray(strct, ray_angle);
+        ft_distance_calc(strct, ray_angle);
         ray_angle += strct->player.fov_angle / strct->rays.num_of;
         strct->color = 0xCBC3E3;
         ft_draw_line(strct, ((strct->player.x + (strct->player.width / 2)) * strct->minimap_scale),
@@ -222,7 +249,7 @@ void        cast_3d_rays(t_vars *strct)
         strct->rays.is_facing_left = (strct->rays.is_facing_right == 0) ? 1 : 0;
         // printf("ray angle: %f.\n", ray_angle);
         // printf("column id: %f.\n", strct->rays.column_id);
-        ft_cast_ray(strct, ray_angle);
+        ft_distance_calc(strct, ray_angle);
         ft_render_3d_rays(strct, ray_angle);
         ray_angle += strct->player.fov_angle / strct->rays.num_of;
         strct->rays.column_id++;

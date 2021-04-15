@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 21:24:09 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/12 21:59:57 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/14 19:43:29 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,19 @@ typedef struct  s_rays
     
 }               t_rays;
 
+typedef struct  s_textures
+{
+    char        *img;
+    void        *mlx;
+    int         w;
+    int         h;
+    int         bpp;
+    int         line_length;
+    int         endian;
+    int         set;
+    
+}               t_textures;
+
 typedef struct  s_vars
 {
     void        *mlx;
@@ -85,11 +98,7 @@ typedef struct  s_vars
     int         B_floor;
     int         ceiling_color;
     int         floor_color;
-    char        *NO_texture;
-    char        *SO_texture;
-    char        *WE_texture;
-    char        *EA_texture;
-    char        *Sprite_texture;
+    char        *tex_path[5];
     int         up;
     int         down;
     int         left;
@@ -104,6 +113,7 @@ typedef struct  s_vars
     int         color;
     t_player    player;
     t_rays      rays;
+    t_textures  *tex;
     
 }               t_vars;
 
@@ -150,6 +160,8 @@ void        ft_init_rays(t_vars *strct);
 double       ft_normalize_angle(double angle);
 double      ft_distance_between_points(double x1, double y1, double x2, double y2);
 void        cast_3d_rays(t_vars *strct);
+int     ft_load_textures(t_vars *strct, int i);
+void        ft_draw_texture(t_vars *strct, int top_pixel, int bottom_pixel, double wall_strip_height, int i);
 
 
 

@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 20:03:34 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/12 21:59:57 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/13 18:57:55 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void ft_init_struct(t_vars *strct)
     strct->minimap_scale = 0.3;
     strct->player.turn_speed = 4 * (PI / 180);
     strct->player.fov_angle = 60 * (PI / 180);
+    strct->tex = (t_textures *)ft_calloc(5 * sizeof(t_textures));
 }
 
 int    ft_init_window(t_vars *strct) {

@@ -1,12 +1,13 @@
 R 1280 800
 
-NO ./textures/brick.txt
-SO ./textures/metal.txt
-WE ./textures/stone.txt
-EA ./textures/wood.txt
-S ./textures/sprites/pillar.txt
+NO ./textures/brick.xpm
+SO ./textures/metal.xpm
+WE ./textures/stone.xpm
+EA ./textures/wood.xpm
+S ./textures/pillar.xpm
 
-C 138,71,12
+
+C 138,71,128
 F 255,45,89
 
         1111111111111111111111111

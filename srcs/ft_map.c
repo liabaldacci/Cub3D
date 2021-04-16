@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/24 19:47:10 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/12 19:08:05 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/16 00:37:37 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,8 @@ int         ft_check_map(t_vars *strct)
     line = NULL;
     fd = open(strct->map_path, O_RDONLY);
     strct->map = (char **)ft_calloc((strct->map_height + 1) * sizeof(char *));
+	strct->tile_X = strct->window_width / strct->map_width;
+	strct->tile_Y = strct->window_height / strct->map_height;
     while(get_next_line(fd, &line) == 1)
     {
         if (ft_strchr("NSWE\t\n\v\f\r", line[0]))

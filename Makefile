@@ -11,7 +11,7 @@ FLAGS_CC =	-Wall -Wextra -Werror
 FLAGS_MLX =	-lm -lbsd -lX11 -lXext -lmlx
 					
 MLX =		$(MLX_DIR)/libmlx.a
-SRCS =		$(SRC_DIR)/main.c $(SRC_DIR)/close.c $(SRC_DIR)/ft_mlx_pixel_put.c \
+SRCS =		$(SRC_DIR)/main.c $(SRC_DIR)/ft_close.c $(SRC_DIR)/ft_mlx_pixel_put.c \
 				$(SRC_DIR)/ft_empty_circle.c $(SRC_DIR)/ft_square.c $(SRC_DIR)/ft_line.c \
 				$(SRC_DIR)/ft_filled_circle.c $(SRC_DIR)/key_press.c $(SRC_DIR)/ft_init.c \
 				$(SRC_DIR)/ft_move.c $(SRC_DIR)/ft_putendl_fd.c $(SRC_DIR)/ft_check_args.c \
@@ -21,7 +21,7 @@ SRCS =		$(SRC_DIR)/main.c $(SRC_DIR)/close.c $(SRC_DIR)/ft_mlx_pixel_put.c \
 				$(SRC_DIR)/ft_resolution.c $(SRC_DIR)/ft_strlen.c $(SRC_DIR)/ft_substr.c \
 				$(SRC_DIR)/ft_strdup.c $(SRC_DIR)/ft_colors.c $(SRC_DIR)/ft_textures.c \
 				$(SRC_DIR)/ft_input.c $(SRC_DIR)/ft_render.c $(SRC_DIR)/raycasting.c \
-				$(SRC_DIR)/other_functions.c $(SRC_DIR)/textures.c
+				$(SRC_DIR)/other_functions.c $(SRC_DIR)/textures.c $(SRC_DIR)/ft_sprites.c
 
 
 HEAD =		-I ./$(NAME).h -I ./$(GNL).h -I ./$(MLX_DIR) -L ./$(MLX_DIR)

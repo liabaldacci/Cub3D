@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 20:43:11 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/15 23:02:43 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/16 14:59:14 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,9 @@ void        ft_errors(t_vars *strct, int i)
         ft_putendl_fd("Error: Invalid path to texture!", 1);
 	else if (i == 8)
         ft_putendl_fd("Error: Map is not valid.", 1);
+	else if (i == 9)
+        ft_putendl_fd("Error: There is no player position.", 1);
+	else if (i == 10)
+        ft_putendl_fd("Error: The player position is not valid.", 1);
     close_program(strct);
 }

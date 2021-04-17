@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 19:28:38 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/16 00:48:42 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/16 21:47:36 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@ void        ft_render(t_vars *strct)
 {
     ft_black_screen(strct);
     cast_3d_rays(strct);
-    ft_render_map(strct);
-    ft_render_player(strct);
-    cast_all_rays(strct);
+	// ft_render_sprites(strct);
+    ft_render_minimap(strct);
+    ft_render_minimap_player(strct);
+    cast_all_minimap_rays(strct);
     mlx_put_image_to_window(strct->mlx, strct->mlx_win, strct->img, 0, 0);
 }
 
@@ -53,7 +54,7 @@ int         main(int argc, char **argv)
         printf("Error initializing window.");
         close_program(&strct);
     }
-    ft_init_rays(&strct);
+    ft_init_elements(&strct);
     mlx_hook(strct.mlx_win, 2, 1L<<0, key_press, &strct);
     mlx_hook(strct.mlx_win, 3, 1L<<1, key_release, &strct);
     mlx_hook(strct.mlx_win, 33, 1L<<17, close_program, &strct);

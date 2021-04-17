@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 20:03:34 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/16 01:07:06 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/16 21:33:13 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	ft_init_struct(t_vars *strct)
 	strct->tex = (t_textures *)ft_calloc(5 * sizeof(t_textures));
 	strct->img = NULL;
 	strct->mlx_win = NULL;
+	strct->num_of_sprites = 0;
+	strct->sprite_id = 0;
 	while (++i < 5)
 		strct->tex_path[i] = NULL;
 	strct->line = 0x0;
@@ -63,8 +65,29 @@ int		ft_init_window(t_vars *strct)
 	return (0);
 }
 
-void	ft_init_rays(t_vars *strct)
+void	ft_init_elements(t_vars *strct)
 {
 	strct->rays.num_of = strct->window_width;
 	strct->rays.size_of = strct->window_width / strct->player.fov_angle;
+	
+}
+
+void	ft_init_sprites(t_vars *strct)
+{
+	int	i;
+
+	i = -1;
+	strct->sprite = (t_sprites *)ft_calloc(strct->num_of_sprites
+		* sizeof(t_sprites));
+	while (++i < strct->num_of_sprites)
+		strct->sprite[i] = (t_sprites){0};
+}
+
+void	ft_init_tile(t_vars *strct, int i, char *str, int line_nbr)
+{
+	strct->tile_X = strct->window_width / strct->map_width;
+	strct->tile_Y = strct->window_height / strct->map_height;
+	strct->player.x = ((i * strct->tile_X) + (strct->tile_X / 2));
+	strct->player.y = ((line_nbr * strct->tile_Y) + (strct->tile_Y / 2));
+	strct->player.direction = str[i];
 }

@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 19:51:29 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/14 19:43:51 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/16 19:05:21 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,7 +210,7 @@ void        ft_distance_calc(t_vars *strct, double ray_angle)
     strct->rays.was_hit_vertical = (strct->rays.vert_hit_distance < strct->rays.horz_hit_distance);
 }
 
-void        cast_all_rays(t_vars *strct)
+void        cast_all_minimap_rays(t_vars *strct)
 {
     double  ray_angle;
     strct->rays.column_id = 0;

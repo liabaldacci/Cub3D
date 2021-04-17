@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 19:26:21 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/16 01:11:52 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/16 21:40:38 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,24 @@ int			ft_texture_letters(char *line, int i)
 
 void		ft_map_size(t_vars *strct, char *line)
 {
+	int		i;
+	int		len;
+
+	i = 0;
 	if (ft_strchr(line, '1') != 0)
 	{
 		if (ft_strlen(line) > strct->map_width)
 			strct->map_width = ft_strlen(line);
 		strct->map_height++;
 	}
+	len = ft_strlen(line);
+	while (i < len)
+	{
+		if (line[i] == '2')
+			strct->num_of_sprites++;
+		i++;
+	}
+	
 }
 
 int			ft_eval_line(char *line, t_vars *strct)

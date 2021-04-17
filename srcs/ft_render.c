@@ -6,13 +6,13 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 19:11:01 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/12 19:09:36 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/16 19:05:08 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3D.h"
 
-int         ft_render_map(t_vars *strct){
+int         ft_render_minimap(t_vars *strct){
     int     i;
     int     j;
     int     tile_x_position;
@@ -45,7 +45,7 @@ int         ft_render_map(t_vars *strct){
     return (0);
 }
 
-int         ft_render_player(t_vars *strct)
+int         ft_render_minimap_player(t_vars *strct)
 {
     int     color;
 

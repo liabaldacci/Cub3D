@@ -6,7 +6,7 @@
 /*   By: gadoglio <gadoglio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 21:24:09 by gadoglio          #+#    #+#             */
-/*   Updated: 2021/04/16 00:58:57 by gadoglio         ###   ########.fr       */
+/*   Updated: 2021/04/16 21:24:08 by gadoglio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,16 @@ typedef struct  s_rays
     
 }               t_rays;
 
+typedef struct  s_sprites
+{
+	double		x;
+	double		y;
+	double		distance;
+	double		angle;
+	int			is_visible;
+
+}               t_sprites;
+
 typedef struct  s_textures
 {
     char        *img;
@@ -75,7 +85,7 @@ typedef struct  s_textures
     int         line_length;
     int         endian;
     int         set;
-    
+
 }               t_textures;
 
 typedef struct  s_vars
@@ -113,9 +123,12 @@ typedef struct  s_vars
     int         color;
 	char		**line;
 	int			fd;
+	int			num_of_sprites;
+	int			sprite_id;
     t_player    player;
     t_rays      rays;
     t_textures  *tex;
+	t_sprites	*sprite;
     
 }               t_vars;
 
@@ -152,19 +165,20 @@ int     ft_colors(char *str, t_vars *strct);
 int     ft_textures_path(char *str, t_vars *strct);
 int     ft_check_map(t_vars *strct);
 int     ft_map(char *str, t_vars *strct, int line_nbr);
-int     ft_render_map(t_vars *strct);
-int     ft_render_player(t_vars *strct);
+int     ft_render_minimap(t_vars *strct);
+int     ft_render_minimap_player(t_vars *strct);
 int    ft_draw_line(t_vars *strct, int x1, int y1, int x2, int y2);
 int     ft_has_wall_at(t_vars *strct, double x, double y);
-void    cast_all_rays(t_vars *strct);
-void        ft_init_rays(t_vars *strct);
+void    cast_all_minimap_rays(t_vars *strct);
+void        ft_init_elements(t_vars *strct);
 double       ft_normalize_angle(double angle);
 double      ft_distance_between_points(double x1, double y1, double x2, double y2);
 void        cast_3d_rays(t_vars *strct);
 int     ft_load_textures(t_vars *strct, int i);
 void        ft_draw_texture(t_vars *strct, int top_pixel, int bottom_pixel, double wall_strip_height, int i);
 void        ft_errors(t_vars *strct, int i);
-
+void	ft_init_tile(t_vars *strct, int i, char *str, int line_nbr);
+void		ft_render_sprites(t_vars *strct);
 
 
 
